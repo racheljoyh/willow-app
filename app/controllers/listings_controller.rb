@@ -1,5 +1,5 @@
 class ListingsController < ApplicationController
-  before_action :check_if_admin, only: [:create]
+  before_action :check_if_admin, only: :create
 
   def index 
     listings = Listing.all
