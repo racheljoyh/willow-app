@@ -1,0 +1,9 @@
+      invoke  active_record
+      remove    db/migrate/20230130222949_create_applications.rb
+      remove    app/models/application.rb
+      invoke  controller
+      remove    app/controllers/applications_controller.rb
+      invoke  resource_route
+       route    resources :applications
+      invoke  serializer
+      remove    app/serializers/application_serializer.rb

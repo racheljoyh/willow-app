@@ -1,9 +1,15 @@
 Rails.application.routes.draw do
-  resources :housing_infos
-  resources :user_infos
-  resources :applications
-  resources :housings
+  resources :list_applications
   resources :users
+  resources :listings
+  resources :listing_infos
   # route to test your configuration
-  get '/hello', to: 'application#hello_world'
+
+  # session routes
+  get '/me', to: "users#show"
+  post "/login", to: "sessions#create"
+  delete '/logout', to: "sessions#destroy"
+  post '/signup', to: "users#create"
+ 
+
 end
