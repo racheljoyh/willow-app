@@ -11,6 +11,12 @@ Rails.application.routes.draw do
   delete '/logout', to: "sessions#destroy"
   post '/signup', to: "users#create"
   patch '/edit_profile', to: 'users#edit_profile'
+
+
+  # listing routes
+
+  get '/rentals', to: 'listings#rentals_index'
+  get '/homes', to: 'listings#homes_index'
  
 
 end
