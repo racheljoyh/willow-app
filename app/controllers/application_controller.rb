@@ -6,8 +6,6 @@ class ApplicationController < ActionController::API
 
     before_action :authorize
 
-
-
     private
 
     def render_not_found_response(exception)

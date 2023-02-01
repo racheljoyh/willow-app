@@ -1,13 +1,6 @@
 class UsersController < ApplicationController
-  skip_before_action :authorize, only: :create
-  before_action :check_if_admin, only: :index
-
-  # /users - allows admin access to all users
-  def index
-    users = User.all
-    render json: users, status: :ok
-  end
-
+  skip_before_action :authorize, only: [:create]
+  # before_action :check_if_admin, only: [:index]
 
     # /me route
   def show
@@ -25,6 +18,12 @@ class UsersController < ApplicationController
   def edit_profile 
     @current_user.update!(user_params)
     render json: @current_user, status: :accepted
+  end
+
+   # /users - allows admin access to all users
+  def index
+    users = User.all
+    render json: users, status: :ok
   end
 
 

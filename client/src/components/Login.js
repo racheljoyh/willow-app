@@ -33,14 +33,18 @@ function Login() {
       } else {
         r.json().then((err) => setErrors(err.errors));
       }
-      navigate("/");
     });
+  }
+
+  function handleToSignupPage() {
+    navigate("/signup");
   }
 
   return (
     <div>
       <form onSubmit={handleSubmit}>
         <h2>Please Login</h2>
+        <label>Username: </label>
         <input
           type="text"
           name="username"
@@ -56,6 +60,15 @@ function Login() {
         />
         <button type="submit">{isLoading ? "Loading..." : "Login"}</button>
       </form>
+      <div>
+        <label> New to Willow?</label>
+        <button onClick={handleToSignupPage}>Sign Up</button>
+      </div>
+      <div>
+        {errors.map((err) => (
+          <p key={err}>{err}!</p>
+        ))}
+      </div>
     </div>
   );
 }
