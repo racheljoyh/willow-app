@@ -12,11 +12,9 @@ Rails.application.routes.draw do
   post '/signup', to: "users#create"
   patch '/edit_profile', to: 'users#edit_profile'
 
-
-  # listing routes
-
-  get '/rentals', to: 'listings#rentals_index'
-  get '/homes', to: 'listings#homes_index'
- 
+  
+ # application routes
+ get 'my_applications/:user_id', to: 'list_applications#my_applications'
+ post '/apply/:user_id/:listing_id', to: 'sessions#create_application'
 
 end

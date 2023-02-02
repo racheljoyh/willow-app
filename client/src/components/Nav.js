@@ -24,16 +24,10 @@ function Nav() {
             <NavLink to="/">Home</NavLink>
           </li>
           <li>
-            <NavLink to="/homes">Buy</NavLink>
-          </li>
-          <li>
             <NavLink to="/homes/for_rent">Rent</NavLink>
           </li>
           <li>
-            <NavLink to="/login">Login</NavLink>
-          </li>
-          <li>
-            <NavLink to="/signup">Signup</NavLink>
+            <NavLink to="/login">Sign in</NavLink>
           </li>
         </ul>
       </div>
@@ -45,9 +39,6 @@ function Nav() {
       <ul>
         <li>
           <NavLink to="/">Home</NavLink>
-        </li>
-        <li>
-          <NavLink to="/homes">Buy</NavLink>
         </li>
         <li>
           <NavLink to="/homes/for_rent">Rent</NavLink>

@@ -19,4 +19,11 @@ class SessionsController < ApplicationController
     session.delete(:user_id)
     head :no_content
   end
+
+  # /apply/:user_id/:listing_id
+  def create_application
+    application = ListApplication.create(:user_id => params[:user_id], :listing_id => params[:listing_id], status: "Pending")
+    render json: application, status: :created
+  end
+
 end

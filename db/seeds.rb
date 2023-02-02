@@ -17,13 +17,11 @@ puts 'Seeding listing info'
 
 l_i1 = ListingInfo.create(footage: 650, bedrooms: 1, bathrooms: 1, description: "Second floor, bright, condo in Whitter Neighborhood near City Park with private parking spot.", date_available: Date.today,  property_owner: 'HotPads', street: '2100 N Franklin St.', city: 'Denver', state: 'CO', zip: '80205')
 
-l_i2 = ListingInfo.create(footage: 2229, bedrooms: 2, bathrooms: 2, description: "Location, Location, Location! Incredible location in the middle of Park Hill and Central Park, two of the hot neighborhoods and close to all the best that Denver has to offer!", date_available: Date.today,  property_owner: 'Alexa Galindo', street: '7325 Montview Blvd.', city: 'Denver', state: 'CO', zip: '80220')
 
 puts 'Seeding listings...'
 
-l1 = Listing.create(image: "https://photos.zillowstatic.com/fp/d40fd6f7ae1737918c6e32d7ea80a7b7-uncropped_scaled_within_1536_1152.webp", price: 1500, type_of_listing: "rental",listing_info_id: l_i1.id)
+l1 = Listing.create(image: "https://photos.zillowstatic.com/fp/d40fd6f7ae1737918c6e32d7ea80a7b7-uncropped_scaled_within_1536_1152.webp", price: 1500, listing_info_id: l_i1.id)
 
-l2 = Listing.create(image: "https://photos.zillowstatic.com/fp/d9b37085ff4e3e7fd55f4e6871f51386-cc_ft_1536.webp", price: 505000, type_of_listing: "sfh", listing_info_id: l_i2.id)
 
 
 puts 'Seeding applications'
