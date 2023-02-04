@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema[7.0].define(version: 2023_02_01_233538) do
+ActiveRecord::Schema[7.0].define(version: 2023_02_03_172242) do
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
 
@@ -24,7 +24,12 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_01_233538) do
     t.index ["user_id"], name: "index_list_applications_on_user_id"
   end
 
-  create_table "listing_infos", force: :cascade do |t|
+  create_table "listings", force: :cascade do |t|
+    t.string "image"
+    t.string "avaliable?"
+    t.integer "price"
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
     t.integer "footage"
     t.integer "bedrooms"
     t.integer "bathrooms"
@@ -35,18 +40,7 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_01_233538) do
     t.string "city"
     t.string "state"
     t.string "zip"
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-  end
-
-  create_table "listings", force: :cascade do |t|
-    t.string "image"
-    t.string "avaliable?"
-    t.integer "price"
-    t.bigint "listing_info_id", null: false
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
-    t.index ["listing_info_id"], name: "index_listings_on_listing_info_id"
+    t.integer "creator_id"
   end
 
   create_table "users", force: :cascade do |t|
@@ -66,5 +60,4 @@ ActiveRecord::Schema[7.0].define(version: 2023_02_01_233538) do
 
   add_foreign_key "list_applications", "listings"
   add_foreign_key "list_applications", "users"
-  add_foreign_key "listings", "listing_infos"
 end

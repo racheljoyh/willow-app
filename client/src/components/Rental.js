@@ -1,25 +1,52 @@
-import ApplicationForm from "./ApplicationForm";
+import React, { useContext, useState } from "react";
+import { UserContext } from "../Context/UserProvider";
+import { useNavigate } from "react-router-dom";
+import Popup from "./Popup";
+import axios from "axios";
 
 function Rental({ rental }) {
-  const { image, price } = rental;
-  const { description, street, city, state, zip } = rental.listing_info;
+  const [isOpen, setIsOpen] = useState(false);
+  const {
+    image,
+    price,
+    description,
+    date_available,
+    street,
+    city,
+    state,
+    zip,
+  } = rental;
 
-  // function handleApplyButtonClick {
+  let { currentUser } = useContext(UserContext);
+  let navigate = useNavigate();
 
-  // }
+  function handleClose() {
+    setIsOpen(false);
+    navigate("/");
+  }
+
+  function handleApply(e) {
+    e.preventDefault();
+    axios
+      .post(`/apply/${currentUser.id}/${rental.id}`)
+      .then((response) => console.log(response));
+    setIsOpen(true);
+  }
 
   return (
     <div>
       <img src={image} alt={street} />
+      <p>${price.toLocaleString("en-US")}/month</p>
+      <p>Date available: {date_available}</p>
       <p>{street}</p>
       <p>
         {city}, {state}
       </p>
-      <p></p>
       <p>{zip}</p>
       <p>{description}</p>
-      <p>${price.toLocaleString("en-US")}/month</p>
-      <button>Apply</button>
+
+      <button onClick={handleApply}>Apply</button>
+      {isOpen === true ? <Popup handleClose={handleClose} /> : null}
     </div>
   );
 }

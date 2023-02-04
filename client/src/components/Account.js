@@ -1,5 +1,14 @@
+import { Link, Outlet } from "react-router-dom";
+
 function Account() {
-  return <h2>My Account</h2>;
+  return (
+    <div>
+      <h3>My Account</h3>
+      <Link to="my_rentals">My Rentals</Link>
+      <Link to="my_applications">My Applications</Link>
+      <Outlet />
+    </div>
+  );
 }
 
 export default Account;

@@ -1,5 +1,5 @@
 class User < ApplicationRecord
-  has_many :list_applications
+  has_many :list_applications, dependent: :destroy
   has_many :listings, through: :list_applications
   has_secure_password
   validates_presence_of :first_name, :last_name, :username

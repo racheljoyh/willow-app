@@ -1,4 +1,3 @@
 class ListingSerializer < ActiveModel::Serializer
-  attributes :id, :image, :avaliable?, :price
-  has_one :listing_info
+  attributes :id, :image, :avaliable?, :price, :footage, :bedrooms, :bathrooms, :description, :date_available, :property_owner, :street, :city, :state, :zip
 end

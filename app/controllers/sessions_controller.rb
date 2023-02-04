@@ -1,7 +1,7 @@
 class SessionsController < ApplicationController
   skip_before_action :authorize, only: :create
    
-  # /login route
+  # /login
   def create
     user = User.find_by(username: params[:username])
     if user&.authenticate(params[:password])
@@ -14,7 +14,7 @@ class SessionsController < ApplicationController
    
   end
 
-  # /logout route
+  # /logout 
   def destroy
     session.delete(:user_id)
     head :no_content
@@ -25,5 +25,10 @@ class SessionsController < ApplicationController
     application = ListApplication.create(:user_id => params[:user_id], :listing_id => params[:listing_id], status: "Pending")
     render json: application, status: :created
   end
+
+
+
+
+  
 
 end
