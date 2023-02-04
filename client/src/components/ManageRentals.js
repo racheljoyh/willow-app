@@ -34,26 +34,31 @@ function ManageRentals() {
       handleDelete={handleDelete}
     />
   ));
-
-  if (allMyRentals.length === 0)
-    return (
-      <>
-        <RentalForm setMyRentals={setMyRentals} />
-      </>
-    );
-
   const togglePopup = () => {
     setIsOpen(!isOpen);
   };
 
+  if (allMyRentals.length === 0)
+    return (
+      <div>
+        <button onClick={togglePopup}>
+          {isOpen ? "Add Listing" : "Close"}
+        </button>
+        <p>You currently have no listings...</p>
+        {isOpen === true ? (
+          <RentalForm setIsOpen={setIsOpen} setMyRentals={setMyRentals} />
+        ) : null}
+      </div>
+    );
+
   return (
-    <>
-      <button onClick={togglePopup}>Add Listing</button>
+    <div>
+      <button onClick={togglePopup}>{isOpen ? "Close" : "Add Listing"}</button>
       {isOpen === true ? (
         <RentalForm setIsOpen={setIsOpen} setMyRentals={setMyRentals} />
       ) : null}
       <div>{allMyRentals}</div>
-    </>
+    </div>
   );
 }
 

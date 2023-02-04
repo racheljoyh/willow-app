@@ -4,6 +4,7 @@ function MyRental({ myRental, handleDelete }) {
       handleDelete(myRental)
     );
   }
+
   return (
     <div key={myRental.id}>
       <img src={myRental.image} alt={myRental.street} />
@@ -15,6 +16,7 @@ function MyRental({ myRental, handleDelete }) {
       </p>
       <p>{myRental.zip}</p>
       <p>{myRental.description}</p>
+      <button>Edit Listing</button>
       <button onClick={handleDeleteRentalClick}>Delete</button>
     </div>
   );

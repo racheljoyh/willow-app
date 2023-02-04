@@ -7,9 +7,6 @@ function RentalForm({ setMyRentals, setIsOpen }) {
   const [errors, setErrors] = useState([]);
 
   let { currentUser } = useContext(UserContext);
-
-  console.log(currentUser);
-
   let navigate = useNavigate();
 
   const [formData, setFormData] = useState({

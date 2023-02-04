@@ -1,6 +1,7 @@
 import Nav from "./components/Nav";
 import Home from "./components/Home";
 import Rentals from "./components/Rentals";
+import MyLikes from "./components/MyLikes";
 import Account from "./components/Account";
 import ManageRentals from "./components/ManageRentals";
 import Applications from "./components/Applications";
@@ -35,7 +36,9 @@ function App() {
           <Route path="/mywillow" element={<Account />}>
             <Route
               path="my_rentals"
-              element={<ManageRentals rentals={rentals} setRentals={setRentals} />}
+              element={
+                <ManageRentals rentals={rentals} setRentals={setRentals} />
+              }
             />
             <Route path="my_applications" element={<Applications />} />
           </Route>

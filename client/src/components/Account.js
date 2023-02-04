@@ -4,7 +4,7 @@ function Account() {
   return (
     <div>
       <h3>My Account</h3>
-      <Link to="my_rentals">My Rentals</Link>
+      <Link to="my_rentals">Manage Rentals</Link>
       <Link to="my_applications">My Applications</Link>
       <Outlet />
     </div>
