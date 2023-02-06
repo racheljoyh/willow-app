@@ -22,6 +22,9 @@ function MyRental({ myRental, setMyRentals, handleDelete }) {
     <div key={myRental.id}>
       <img src={myRental.image} alt={myRental.street} />
       <p>${myRental.price.toLocaleString("en-US")}/month</p>
+      <p>Square footage: {myRental.footage}</p>
+      <p>Bedrooms: {myRental.bedrooms}</p>
+      <p>Bathrooms: {myRental.bathrooms}</p>
       <p>Date available: {myRental.date_available}</p>
       <p>{myRental.street}</p>
       <p>
@@ -29,6 +32,7 @@ function MyRental({ myRental, setMyRentals, handleDelete }) {
       </p>
       <p>{myRental.zip}</p>
       <p>{myRental.description}</p>
+      <p>Listing Agent: {myRental.property_owner}</p>
       <button onClick={togglePopup}>Edit Listing</button>
       <button onClick={handleDeleteRentalClick}>Delete</button>
       {isOpen === true ? (

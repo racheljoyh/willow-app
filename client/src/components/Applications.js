@@ -7,15 +7,12 @@ function Applications() {
   const [applications, setApplications] = useState([]);
 
   useEffect(() => {
-    if (currentUser)
-      fetch(`/my_applications/${currentUser.id}`).then((r) => {
-        if (r.ok) {
-          r.json().then((apps) => setApplications(apps));
-        }
-      });
-  }, [currentUser]);
-
-  console.log(applications);
+    fetch(`/my_applications/${currentUser.id}`).then((r) => {
+      if (r.ok) {
+        r.json().then((apps) => setApplications(apps));
+      }
+    });
+  }, []);
 
   function handleDeleteApp(deletedApp) {
     const updatedApps = applications.filter((app) => app.id !== deletedApp.id);

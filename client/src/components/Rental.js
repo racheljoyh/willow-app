@@ -1,8 +1,6 @@
-import React, { useContext, useState } from "react";
-import { UserContext } from "../Context/UserProvider";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
-import Popup from "./Popup";
-import axios from "axios";
+import ApplicationPopup from "./ApplicationPopup";
 
 function Rental({ rental }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -10,33 +8,35 @@ function Rental({ rental }) {
     image,
     price,
     description,
+    bedrooms,
+    bathrooms,
+    footage,
     date_available,
     street,
     city,
     state,
     zip,
+    property_owner,
   } = rental;
 
-  let { currentUser } = useContext(UserContext);
   let navigate = useNavigate();
 
   function handleClose() {
     setIsOpen(false);
-    navigate("/");
+    navigate("/homes/for_rent");
   }
 
-  function handleApply(e) {
-    e.preventDefault();
-    axios
-      .post(`/apply/${currentUser.id}/${rental.id}`)
-      .then((response) => console.log(response));
-    setIsOpen(true);
-  }
+  const togglePopup = () => {
+    setIsOpen(!isOpen);
+  };
 
   return (
     <div>
       <img src={image} alt={street} />
       <p>${price.toLocaleString("en-US")}/month</p>
+      <p>Square footage: {footage}</p>
+      <p>Bedrooms: {bedrooms}</p>
+      <p>Bathrooms: {bathrooms}</p>
       <p>Date available: {date_available}</p>
       <p>{street}</p>
       <p>
@@ -44,9 +44,12 @@ function Rental({ rental }) {
       </p>
       <p>{zip}</p>
       <p>{description}</p>
+      <p>Listing Agent: {property_owner}</p>
 
-      <button onClick={handleApply}>Apply</button>
-      {isOpen === true ? <Popup handleClose={handleClose} /> : null}
+      <button onClick={togglePopup}>Apply</button>
+      {isOpen === true ? (
+        <ApplicationPopup handleClose={handleClose} rental={rental} />
+      ) : null}
     </div>
   );
 }

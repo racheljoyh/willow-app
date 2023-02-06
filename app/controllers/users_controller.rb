@@ -14,8 +14,8 @@ class UsersController < ApplicationController
       render json: user, status: :created
   end
 
-  # 
-  def edit_profile 
+  # /users/:id
+  def update 
     @current_user.update!(user_params)
     render json: @current_user, status: :accepted
   end

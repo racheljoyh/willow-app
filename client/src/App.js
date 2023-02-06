@@ -9,6 +9,7 @@ import { UserProvider } from "./Context/UserProvider";
 import { Route, Routes } from "react-router-dom";
 import Login from "./components/Login";
 import Signup from "./components/Signup";
+import AccountInfo from "./components/AccountInfo";
 import "./App.css";
 import { useState, useEffect } from "react";
 
@@ -41,6 +42,7 @@ function App() {
               }
             />
             <Route path="my_applications" element={<Applications />} />
+            <Route path="account_info" element={<AccountInfo />} />
           </Route>
           <Route path="/signup" element={<Signup />} />
           <Route path="/" element={<Home />} />

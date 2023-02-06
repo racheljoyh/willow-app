@@ -14,6 +14,8 @@ function UserProvider({ children }) {
     });
   }, []);
 
+  if (!currentUser) return "Loading...";
+
   return (
     <UserContext.Provider value={{ currentUser, setCurrentUser }}>
       {children}

@@ -35,21 +35,6 @@ function EditListingPopup({ handleClose, myRental, setMyRentals }) {
   });
 
   function handleSubmit(e) {
-    const updateListing = {
-      image: formData.image,
-      price: formData.price,
-      footage: formData.footage,
-      bedrooms: formData.bedrooms,
-      bathrooms: formData.bathrooms,
-      description: formData.description,
-      date_available: formData.date_available,
-      property_owner: formData.property_owner,
-      street: formData.street,
-      city: formData.city,
-      state: formData.state,
-      zip: formData.zip,
-    };
-
     e.preventDefault();
     setErrors([]);
     setIsLoading(true);
@@ -58,15 +43,12 @@ function EditListingPopup({ handleClose, myRental, setMyRentals }) {
       headers: {
         "Content-Type": "application/json",
       },
-      body: JSON.stringify(updateListing),
+      body: JSON.stringify(formData),
     }).then((r) => {
       setIsLoading(false);
       if (r.ok) {
         r.json().then((updatedListing) => {
           alert("Your listing has been updated!");
-          setMyRentals((prevListings) => {
-            return [...prevListings, updatedListing];
-          });
         });
       } else {
         r.json().then((err) => setErrors(err.errors));
