@@ -5,8 +5,10 @@ function Rentals({
   rentals,
   searchQuery,
   setSearchQuery,
-  filterBy,
-  setFilterBy,
+  filterByBedrooms,
+  setFilterByBedrooms,
+  setFilterByBath,
+  filterByBath,
 }) {
   const allRentals = rentals.map((rental) => (
     <Rental key={rental.id} rental={rental} />
@@ -17,8 +19,10 @@ function Rentals({
       <Search
         searchQuery={searchQuery}
         setSearchQuery={setSearchQuery}
-        filterBy={filterBy}
-        setFilterBy={setFilterBy}
+        filterByBedrooms={filterByBedrooms}
+        setFilterByBedrooms={setFilterByBedrooms}
+        setFilterByBath={setFilterByBath}
+        filterByBath={filterByBath}
       />
       <h2>Homes and Apartments for Rent</h2>
       <div>{allRentals}</div>

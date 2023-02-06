@@ -16,7 +16,8 @@ import { useState, useEffect } from "react";
 function App() {
   const [rentals, setRentals] = useState([]);
   const [searchQuery, setSearchQuery] = useState("");
-  const [filterBy, setFilterBy] = useState("All");
+  const [bedrooms, setBedrooms] = useState("Any");
+  const [bathrooms, setBathrooms] = useState("Any");
 
   useEffect(() => {
     fetch("/listings").then((r) => {
@@ -26,16 +27,19 @@ function App() {
     });
   }, []);
 
-  // const filteredSearch = rentals.filter((rental) => {
-  //   if (filterBy === "All") return true;
-  //   return rental.city.toLowerCase().includes(searchQuery.toLowerCase());
-  // });
-
   const rentalsToDisplay = rentals.filter((rental) => {
     return (
       rental.city.toLowerCase().includes(searchQuery.toLowerCase()) ||
       rental.zip.toLowerCase().includes(searchQuery.toLowerCase()) ||
       rental.street.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  });
+
+  const rentalFilter = rentalsToDisplay.filter((rental) => {
+    if (bedrooms === "Any" && bathrooms === "Any") return true;
+    return (
+      rental.bedrooms.toString() === bedrooms ||
+      rental.bathrooms.toString() === bathrooms
     );
   });
 
@@ -49,9 +53,13 @@ function App() {
             path="/homes/for_rent"
             element={
               <Rentals
-                rentals={rentalsToDisplay}
+                rentals={rentalFilter}
                 searchQuery={searchQuery}
                 setSearchQuery={setSearchQuery}
+                filterByBedrooms={bedrooms}
+                setFilterByBedrooms={setBedrooms}
+                filterByBath={bathrooms}
+                setFilterByBath={setBathrooms}
               />
             }
           />
