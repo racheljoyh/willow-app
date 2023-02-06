@@ -15,6 +15,8 @@ import { useState, useEffect } from "react";
 
 function App() {
   const [rentals, setRentals] = useState([]);
+  const [searchQuery, setSearchQuery] = useState("");
+  const [filterBy, setFilterBy] = useState("All");
 
   useEffect(() => {
     fetch("/listings").then((r) => {
@@ -24,6 +26,19 @@ function App() {
     });
   }, []);
 
+  // const filteredSearch = rentals.filter((rental) => {
+  //   if (filterBy === "All") return true;
+  //   return rental.city.toLowerCase().includes(searchQuery.toLowerCase());
+  // });
+
+  const rentalsToDisplay = rentals.filter((rental) => {
+    return (
+      rental.city.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      rental.zip.toLowerCase().includes(searchQuery.toLowerCase()) ||
+      rental.street.toLowerCase().includes(searchQuery.toLowerCase())
+    );
+  });
+
   return (
     <div>
       <UserProvider>
@@ -32,7 +47,13 @@ function App() {
           <Route path="/login" element={<Login />} />
           <Route
             path="/homes/for_rent"
-            element={<Rentals rentals={rentals} />}
+            element={
+              <Rentals
+                rentals={rentalsToDisplay}
+                searchQuery={searchQuery}
+                setSearchQuery={setSearchQuery}
+              />
+            }
           />
           <Route path="/mywillow" element={<Account />}>
             <Route
@@ -45,7 +66,12 @@ function App() {
             <Route path="account_info" element={<AccountInfo />} />
           </Route>
           <Route path="/signup" element={<Signup />} />
-          <Route path="/" element={<Home />} />
+          <Route
+            path="/"
+            element={
+              <Home searchQuery={searchQuery} setSearchQuery={setSearchQuery} />
+            }
+          />
         </Routes>
       </UserProvider>
     </div>

@@ -1,5 +1,11 @@
+import Search from "./Search";
+
 function Home() {
-  return <h1>Landing Page</h1>;
+  return (
+    <div>
+      <h1>Landing Page</h1>;
+    </div>
+  );
 }
 
 export default Home;

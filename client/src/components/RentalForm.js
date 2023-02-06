@@ -55,27 +55,27 @@ function RentalForm({ setMyRentals, setIsOpen }) {
 
     setErrors([]);
     setIsLoading(true);
-    if (currentUser) {
-      fetch("/listings", {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-        },
-        body: JSON.stringify(newListing),
-      }).then((r) => {
-        setIsLoading(false);
-        if (r.ok) {
-          r.json().then((newRental) => {
-            setMyRentals((prevRentals) => [newRental, ...prevRentals]);
-            setIsOpen(false);
-            navigate("/homes/for_rent");
-          });
-        } else {
-          r.json().then((err) => setErrors(err.errors));
-        }
-      });
-    }
+
+    fetch("/listings", {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify(newListing),
+    }).then((r) => {
+      setIsLoading(false);
+      if (r.ok) {
+        r.json().then((newRental) => {
+          setMyRentals((prevRentals) => [newRental, ...prevRentals]);
+          setIsOpen(false);
+          navigate("/homes/for_rent");
+        });
+      } else {
+        r.json().then((err) => setErrors(err.errors));
+      }
+    });
   }
+
   return (
     <div>
       <form onSubmit={handleSubmit}>
