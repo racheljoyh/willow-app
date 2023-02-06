@@ -9,6 +9,13 @@ class ListingsController < ApplicationController
   
   end
 
+  # /listings/:id
+  def update 
+    listing = Listing.find(params[:id])
+    listing.update(listing_params)
+    render json: listing, status: :ok
+  end
+
   # /listings
   def create
     listing = Listing.create(listing_params)

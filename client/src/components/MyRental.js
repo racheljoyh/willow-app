@@ -1,9 +1,22 @@
-function MyRental({ myRental, handleDelete }) {
+import { useState } from "react";
+import EditListingPopup from "./EditListingPopup";
+
+function MyRental({ myRental, setMyRentals, handleDelete }) {
+  const [isOpen, setIsOpen] = useState(false);
+
   function handleDeleteRentalClick() {
     fetch(`/listings/${myRental.id}`, { method: "DELETE" }).then(() =>
       handleDelete(myRental)
     );
   }
+
+  function handleClose() {
+    setIsOpen(false);
+  }
+
+  const togglePopup = () => {
+    setIsOpen(!isOpen);
+  };
 
   return (
     <div key={myRental.id}>
@@ -16,8 +29,15 @@ function MyRental({ myRental, handleDelete }) {
       </p>
       <p>{myRental.zip}</p>
       <p>{myRental.description}</p>
-      <button>Edit Listing</button>
+      <button onClick={togglePopup}>Edit Listing</button>
       <button onClick={handleDeleteRentalClick}>Delete</button>
+      {isOpen === true ? (
+        <EditListingPopup
+          handleClose={handleClose}
+          setMyRentals={setMyRentals}
+          myRental={myRental}
+        />
+      ) : null}
     </div>
   );
 }

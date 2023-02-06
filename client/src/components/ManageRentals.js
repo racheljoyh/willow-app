@@ -1,7 +1,6 @@
 import RentalForm from "./RentalForm";
 import { useState, useEffect, useContext } from "react";
-import { all } from "axios";
-import { Navigate } from "react-router-dom";
+
 import { UserContext } from "../Context/UserProvider";
 import MyRental from "./MyRental";
 
@@ -31,6 +30,7 @@ function ManageRentals() {
     <MyRental
       key={myRental.id}
       myRental={myRental}
+      setMyRentals={setMyRentals}
       handleDelete={handleDelete}
     />
   ));
