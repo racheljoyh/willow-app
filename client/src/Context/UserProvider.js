@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import Login from "../components/Login";
 
 const UserContext = React.createContext();
 
@@ -14,7 +15,7 @@ function UserProvider({ children }) {
     });
   }, []);
 
-  if (!currentUser) return "Loading...";
+  // if (!currentUser) return "Loading...";
 
   return (
     <UserContext.Provider value={{ currentUser, setCurrentUser }}>

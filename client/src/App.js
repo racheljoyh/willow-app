@@ -27,16 +27,14 @@ function App() {
     });
   }, []);
 
+  console.log(rentals);
+
   const rentalsToDisplay = rentals.filter((rental) => {
-    return (
-      rental.city.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      rental.zip.toLowerCase().includes(searchQuery.toLowerCase()) ||
-      rental.street.toLowerCase().includes(searchQuery.toLowerCase())
-    );
+    return rental.address.toLowerCase().includes(searchQuery.toLowerCase());
   });
 
   const rentalFilter = rentalsToDisplay.filter((rental) => {
-    if (bedrooms === "Any" && bathrooms === "Any") return true;
+    if (bedrooms === "Any" || bathrooms === "Any") return true;
     return (
       rental.bedrooms.toString() === bedrooms ||
       rental.bathrooms.toString() === bathrooms

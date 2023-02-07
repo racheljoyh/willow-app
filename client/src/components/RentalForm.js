@@ -55,6 +55,7 @@ function RentalForm({ setMyRentals, setIsOpen }) {
 
     setErrors([]);
     setIsLoading(true);
+    setMyRentals((prevRentals) => [newListing, ...prevRentals]);
 
     fetch("/listings", {
       method: "POST",
@@ -65,11 +66,7 @@ function RentalForm({ setMyRentals, setIsOpen }) {
     }).then((r) => {
       setIsLoading(false);
       if (r.ok) {
-        r.json().then((newRental) => {
-          setMyRentals((prevRentals) => [newRental, ...prevRentals]);
-          setIsOpen(false);
-          navigate("/homes/for_rent");
-        });
+        r.json().then(setIsOpen(false));
       } else {
         r.json().then((err) => setErrors(err.errors));
       }

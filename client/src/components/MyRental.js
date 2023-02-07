@@ -20,18 +20,13 @@ function MyRental({ myRental, setMyRentals, handleDelete }) {
 
   return (
     <div key={myRental.id}>
-      <img src={myRental.image} alt={myRental.street} />
+      <img src={myRental.image} alt={myRental.address} />
+      <p>{myRental.address}</p>
       <p>${myRental.price.toLocaleString("en-US")}/month</p>
       <p>Square footage: {myRental.footage}</p>
       <p>Bedrooms: {myRental.bedrooms}</p>
       <p>Bathrooms: {myRental.bathrooms}</p>
       <p>Date available: {myRental.date_available}</p>
-      <p>{myRental.street}</p>
-      <p>
-        {myRental.city}, {myRental.state}
-      </p>
-      <p>{myRental.zip}</p>
-      <p>{myRental.description}</p>
       <p>Listing Agent: {myRental.property_owner}</p>
       <button onClick={togglePopup}>Edit Listing</button>
       <button onClick={handleDeleteRentalClick}>Delete</button>

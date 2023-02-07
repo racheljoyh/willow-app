@@ -12,10 +12,7 @@ function Rental({ rental }) {
     bathrooms,
     footage,
     date_available,
-    street,
-    city,
-    state,
-    zip,
+    address,
     property_owner,
   } = rental;
 
@@ -32,17 +29,14 @@ function Rental({ rental }) {
 
   return (
     <div>
-      <img src={image} alt={street} />
+      <img src={image} alt={address} />
       <p>${price.toLocaleString("en-US")}/month</p>
+      <p>{address}</p>
       <p>Square footage: {footage}</p>
       <p>Bedrooms: {bedrooms}</p>
       <p>Bathrooms: {bathrooms}</p>
       <p>Date available: {date_available}</p>
-      <p>{street}</p>
-      <p>
-        {city}, {state}
-      </p>
-      <p>{zip}</p>
+
       <p>{description}</p>
       <p>Listing Agent: {property_owner}</p>
 
