@@ -36,7 +36,7 @@ function App() {
   const rentalFilter = rentalsToDisplay.filter((rental) => {
     if (bedrooms === "Any" || bathrooms === "Any") return true;
     return (
-      rental.bedrooms.toString() === bedrooms ||
+      rental.bedrooms.toString() === bedrooms &&
       rental.bathrooms.toString() === bathrooms
     );
   });

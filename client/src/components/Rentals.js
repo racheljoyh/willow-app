@@ -1,5 +1,6 @@
 import Rental from "./Rental";
 import Search from "./Search";
+import Map from "./Map";
 
 function Rentals({
   rentals,
@@ -26,6 +27,7 @@ function Rentals({
       />
       <h2>Homes and Apartments for Rent</h2>
       <div>{allRentals}</div>
+      <Map rentals={rentals} />
     </div>
   );
 }

@@ -4,7 +4,8 @@ class ListingsController < ApplicationController
 
   # /listings
   def index 
-    listings = Listing.all
+    listings = Listing.where.not(latitude: nil, longitude: nil)
+
     render json: listings, status: :ok
   
   end

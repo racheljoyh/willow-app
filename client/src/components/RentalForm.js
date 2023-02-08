@@ -19,10 +19,7 @@ function RentalForm({ setMyRentals, setIsOpen }) {
     description: "",
     date_available: "",
     property_owner: "",
-    street: "",
-    city: "",
-    state: "",
-    zip: "",
+    address: "",
   });
 
   function handleOnChange(e) {
@@ -47,10 +44,7 @@ function RentalForm({ setMyRentals, setIsOpen }) {
       description: formData.description,
       date_available: formData.date_available,
       property_owner: formData.property_owner,
-      street: formData.street,
-      city: formData.city,
-      state: formData.state,
-      zip: formData.zip,
+      address: formData.address,
     };
 
     setErrors([]);
@@ -133,32 +127,11 @@ function RentalForm({ setMyRentals, setIsOpen }) {
           value={formData.property_owner}
           onChange={handleOnChange}
         />
-        <label>Street: </label>
+        <label>Address: </label>
         <input
           type="text"
-          name="street"
-          value={formData.street}
-          onChange={handleOnChange}
-        />
-        <label>City: </label>
-        <input
-          type="text"
-          name="city"
-          value={formData.city}
-          onChange={handleOnChange}
-        />
-        <label>State: </label>
-        <input
-          type="text"
-          name="state"
-          value={formData.state}
-          onChange={handleOnChange}
-        />
-        <label>Zip: </label>
-        <input
-          type="text"
-          name="zip"
-          value={formData.zip}
+          name="address"
+          value={formData.address}
           onChange={handleOnChange}
         />
 
