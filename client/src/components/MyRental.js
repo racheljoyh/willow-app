@@ -4,6 +4,8 @@ import EditListingPopup from "./EditListingPopup";
 function MyRental({ myRental, setMyRentals, handleDelete }) {
   const [isOpen, setIsOpen] = useState(false);
 
+  const { images } = myRental;
+
   function handleDeleteRentalClick() {
     fetch(`/listings/${myRental.id}`, { method: "DELETE" }).then(() =>
       handleDelete(myRental)
@@ -20,7 +22,11 @@ function MyRental({ myRental, setMyRentals, handleDelete }) {
 
   return (
     <div key={myRental.id}>
-      <img src={myRental.image} alt={myRental.address} />
+      {/* <div>
+        {images.map((image) => (
+          <img src={image} />
+        ))}
+      </div> */}
       <p>{myRental.address}</p>
       <p>${myRental.price.toLocaleString("en-US")}/month</p>
       <p>Square footage: {myRental.footage}</p>

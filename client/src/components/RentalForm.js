@@ -5,13 +5,14 @@ import { UserContext } from "../Context/UserProvider";
 function RentalForm({ setMyRentals, setIsOpen }) {
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState([]);
+  const [uploadedFiles, setUploadedFiles] = useState([]);
 
   let { currentUser } = useContext(UserContext);
   let navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     creator_id: "",
-    image: "",
+    images: null,
     price: "",
     footage: "",
     bedrooms: "",
@@ -36,7 +37,7 @@ function RentalForm({ setMyRentals, setIsOpen }) {
 
     const newListing = {
       creator_id: currentUser.id,
-      image: formData.image,
+      images: formData.images,
       price: formData.price,
       footage: formData.footage,
       bedrooms: formData.bedrooms,
@@ -64,19 +65,36 @@ function RentalForm({ setMyRentals, setIsOpen }) {
       } else {
         r.json().then((err) => setErrors(err.errors));
       }
+      // handleUploadFiles();
     });
+  }
+
+  function handleFileEvent(e) {
+    const chosenFiles = Array.prototype.slice.call(e.target.files);
+    handleUploadFiles(chosenFiles);
+  }
+
+  function handleUploadFiles(files) {
+    const uploaded = [...uploadedFiles];
+    files.some((file) => {
+      uploaded.push(file);
+    });
+
+    setUploadedFiles(uploaded);
   }
 
   return (
     <div>
       <form onSubmit={handleSubmit}>
         <h2 className="heading-secondary">Add New Listing</h2>
-        <label>Image: </label>
+        <label>Images: </label>
         <input
-          type="text"
-          name="image"
-          value={formData.image}
-          onChange={handleOnChange}
+          type="file"
+          accept="images/*"
+          multiple
+          name="images"
+          value={formData.images}
+          onChange={(e) => setUploadedFiles(e.target.files)}
         />
         <label>Price: </label>
         <input

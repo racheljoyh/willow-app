@@ -9,6 +9,11 @@ class ListingsController < ApplicationController
     render json: listings, status: :ok
   
   end
+  
+  def show 
+    listing = Listing.find(params[:id])
+    render json: listing, status: :ok
+  end
 
   # /listings/:id
   def update 
@@ -39,7 +44,7 @@ class ListingsController < ApplicationController
   private
 
   def listing_params
-    params.require(:listing).permit(:image, :price, :footage, :bedrooms, :bathrooms, :description, :date_available, :property_ownership, :street, :city, :state, :zip, :creator_id, images: [])
+    params.permit(:price, :footage, :bedrooms, :bathrooms, :description, :date_available, :property_ownership, :creator_id, :address, images: [])
 
   end
 

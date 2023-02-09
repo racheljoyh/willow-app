@@ -5,7 +5,7 @@ import ApplicationPopup from "./ApplicationPopup";
 function Rental({ rental }) {
   const [isOpen, setIsOpen] = useState(false);
   const {
-    image,
+    images,
     price,
     description,
     bedrooms,
@@ -29,7 +29,11 @@ function Rental({ rental }) {
 
   return (
     <div>
-      <img src={image} alt={address} />
+      {/* <div>
+        {images.map((image) => (
+          <img src={image} />
+        ))}
+      </div> */}
       <p>${price.toLocaleString("en-US")}/month</p>
       <p>{address}</p>
       <p>Square footage: {footage}</p>

@@ -27,8 +27,6 @@ function App() {
     });
   }, []);
 
-  console.log(rentals);
-
   const rentalsToDisplay = rentals.filter((rental) => {
     return rental.address.toLowerCase().includes(searchQuery.toLowerCase());
   });
@@ -52,6 +50,7 @@ function App() {
             element={
               <Rentals
                 rentals={rentalFilter}
+                setRentals={setRentals}
                 searchQuery={searchQuery}
                 setSearchQuery={setSearchQuery}
                 filterByBedrooms={bedrooms}

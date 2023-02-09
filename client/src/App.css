@@ -41,3 +41,24 @@ img {
   border: 1px solid #999;
   font-size: 20px;
 }
+
+.marker {
+  background-color: red;
+  color: white;
+  padding: 0 5px 0 5px;
+  font-size: 12px;
+  transition: all 0.3s ease-out;
+  position: relative;
+  border-radius: 4px;
+  cursor: pointer;
+}
+
+.marker:hover {
+  background-color: white;
+  color: red;
+}
+
+.map {
+  width: 90vw;
+  height: 50vh;
+}
