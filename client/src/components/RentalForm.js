@@ -1,4 +1,4 @@
-import { useContext, useState } from "react";
+import { useContext, useState, useRef } from "react";
 import { useNavigate } from "react-router-dom";
 import { UserContext } from "../Context/UserProvider";
 
@@ -6,13 +6,13 @@ function RentalForm({ setMyRentals, setIsOpen }) {
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState([]);
   const [uploadedFiles, setUploadedFiles] = useState([]);
+  const imagesRef = useRef([]);
 
   let { currentUser } = useContext(UserContext);
   let navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     creator_id: "",
-    images: null,
     price: "",
     footage: "",
     bedrooms: "",
@@ -32,69 +32,96 @@ function RentalForm({ setMyRentals, setIsOpen }) {
     });
   }
 
-  function handleSubmit(e) {
+  function handleUpload(e) {
     e.preventDefault();
 
-    const newListing = {
-      creator_id: currentUser.id,
-      images: formData.images,
-      price: formData.price,
-      footage: formData.footage,
-      bedrooms: formData.bedrooms,
-      bathrooms: formData.bathrooms,
-      description: formData.description,
-      date_available: formData.date_available,
-      property_owner: formData.property_owner,
-      address: formData.address,
-    };
+    const submitData = new FormData();
+
+    submitData.append("creator_id", currentUser.id);
+    submitData.append("price", formData.price);
+    submitData.append("footage", formData.footage);
+    submitData.append("bedrooms", formData.bedrooms);
+    submitData.append("bathrooms", formData.bathrooms);
+    submitData.append("description", formData.description);
+    submitData.append("date_available", formData.date_available);
+    submitData.append("property_owner", formData.property_owner);
+    submitData.append("address", formData.address);
+
+    for (let i = 0; i < imagesRef.current.files.length; i++) {
+      submitData.append("images[]", imagesRef.current.files[i]);
+    }
+
+    handleSubmit(submitData);
+  }
+
+  // function handleFileEvent(e) {
+  //   setUploadedFiles({
+  //     images: e.target.files[(0, 2)],
+  //   });
+  // }
+
+  function handleSubmit(submitData) {
+    // const newListing = {
+    //   creator_id: currentUser.id,
+    //   images: formData.images,
+    //   price: formData.price,
+    //   footage: formData.footage,
+    //   bedrooms: formData.bedrooms,
+    //   bathrooms: formData.bathrooms,
+    //   description: formData.description,
+    //   date_available: formData.date_available,
+    //   property_owner: formData.property_owner,
+    //   address: formData.address,
+    // };
 
     setErrors([]);
     setIsLoading(true);
-    setMyRentals((prevRentals) => [newListing, ...prevRentals]);
 
     fetch("/listings", {
       method: "POST",
-      headers: {
-        "Content-Type": "application/json",
-      },
-      body: JSON.stringify(newListing),
+      body: submitData,
     }).then((r) => {
       setIsLoading(false);
       if (r.ok) {
-        r.json().then(setIsOpen(false));
+        r.json().then((data) => {
+          console.log(data);
+          setMyRentals((prevRentals) => [data, ...prevRentals]);
+        });
       } else {
         r.json().then((err) => setErrors(err.errors));
       }
-      // handleUploadFiles();
     });
   }
 
-  function handleFileEvent(e) {
-    const chosenFiles = Array.prototype.slice.call(e.target.files);
-    handleUploadFiles(chosenFiles);
-  }
+  // function handleFileEvent(e) {
+  //   const chosenFiles = Array.prototype.slice.call(e.target.files);
+  //   handleUploadFiles(chosenFiles);
+  //   console.log(e.target.files);
+  // }
 
-  function handleUploadFiles(files) {
-    const uploaded = [...uploadedFiles];
-    files.some((file) => {
-      uploaded.push(file);
-    });
+  // function handleUploadFiles(files) {
+  //   const uploaded = [...uploadedFiles];
+  //   files.some((file) => {
+  //     return uploaded.push(file);
+  //   });
 
-    setUploadedFiles(uploaded);
-  }
+  //   setUploadedFiles(uploaded);
+  // }
+
+  console.log(imagesRef);
 
   return (
     <div>
-      <form onSubmit={handleSubmit}>
+      <form>
         <h2 className="heading-secondary">Add New Listing</h2>
         <label>Images: </label>
         <input
           type="file"
           accept="images/*"
           multiple
-          name="images"
-          value={formData.images}
-          onChange={(e) => setUploadedFiles(e.target.files)}
+          ref={imagesRef}
+          name="image"
+          // onChange={handleFileEvent}
         />
         <label>Price: </label>
         <input
@@ -153,7 +180,7 @@ function RentalForm({ setMyRentals, setIsOpen }) {
           onChange={handleOnChange}
         />
 
-        <button className="btn login-btn" type="submit">
+        <button onClick={handleUpload} className="btn login-btn" type="submit">
           {isLoading ? "Loading..." : "Submit"}
         </button>
       </form>

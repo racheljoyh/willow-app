@@ -6,6 +6,7 @@ import MyRental from "./MyRental";
 
 function ManageRentals() {
   const [myRentals, setMyRentals] = useState([]);
+  const [images, setImages] = useState([]);
   const [isOpen, setIsOpen] = useState(false);
 
   let { currentUser } = useContext(UserContext);
@@ -14,10 +15,14 @@ function ManageRentals() {
     if (currentUser)
       fetch("/my_listings/all").then((r) => {
         if (r.ok) {
-          r.json().then((rentals) => setMyRentals(rentals));
+          r.json().then((rentals) => {
+            setMyRentals(rentals);
+          });
         }
       });
   }, [currentUser]);
+
+  
 
   function handleDelete(deletedRental) {
     const updatedRentals = myRentals.filter(
@@ -42,7 +47,7 @@ function ManageRentals() {
     return (
       <div>
         <button onClick={togglePopup}>
-          {isOpen ? "Add Listing" : "Close"}
+          {isOpen ? "Close" : "Add Listing"}
         </button>
         <p>You currently have no listings...</p>
         {isOpen === true ? (

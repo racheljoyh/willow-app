@@ -4,13 +4,14 @@ import EditListingPopup from "./EditListingPopup";
 function MyRental({ myRental, setMyRentals, handleDelete }) {
   const [isOpen, setIsOpen] = useState(false);
 
-  const { images } = myRental;
-
   function handleDeleteRentalClick() {
     fetch(`/listings/${myRental.id}`, { method: "DELETE" }).then(() =>
       handleDelete(myRental)
     );
   }
+
+  const { images } = myRental;
+  console.log(images);
 
   function handleClose() {
     setIsOpen(false);
@@ -20,15 +21,17 @@ function MyRental({ myRental, setMyRentals, handleDelete }) {
     setIsOpen(!isOpen);
   };
 
+  const listingImages = images.map((image) => (
+    <img key={image.id} src={image.url} />
+  ));
+
+  console.log(listingImages);
+
   return (
     <div key={myRental.id}>
-      {/* <div>
-        {images.map((image) => (
-          <img src={image} />
-        ))}
-      </div> */}
+      <div>{listingImages}</div>
       <p>{myRental.address}</p>
-      <p>${myRental.price.toLocaleString("en-US")}/month</p>
+      <p>${myRental.price}/month</p>
       <p>Square footage: {myRental.footage}</p>
       <p>Bedrooms: {myRental.bedrooms}</p>
       <p>Bathrooms: {myRental.bathrooms}</p>

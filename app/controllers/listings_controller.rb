@@ -12,7 +12,11 @@ class ListingsController < ApplicationController
   
   def show 
     listing = Listing.find(params[:id])
-    render json: listing, status: :ok
+    render json: listing.as_json.merge(
+      images: listing.images.map do |image|
+        url_for(image)
+      end
+    ), status: :ok
   end
 
   # /listings/:id
@@ -24,7 +28,15 @@ class ListingsController < ApplicationController
 
   # /listings
   def create
-    listing = Listing.create(listing_params)
+    listing = Listing.create(listing_params.except(:images))
+    images = params[:images]
+
+    if images
+      images.each do |image|
+        listing.images.attach(image)
+      end
+    end
+
     render json: listing, status: :created
   end
 
@@ -44,10 +56,9 @@ class ListingsController < ApplicationController
   private
 
   def listing_params
-    params.permit(:price, :footage, :bedrooms, :bathrooms, :description, :date_available, :property_ownership, :creator_id, :address, images: [])
+    params.permit(:price, :footage, :bedrooms, :bathrooms, :description, :date_available, :property_owner, :creator_id, :address, images:[])
 
   end
 
-  
   
 end
