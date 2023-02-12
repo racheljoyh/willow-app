@@ -1,8 +1,6 @@
 import Rental from "./Rental";
 import Search from "./Search";
-import MyMap from "./MyMap";
 import Map from "./Map";
-import { Wrapper } from "@googlemaps/react-wrapper";
 
 function Rentals({
   rentals,
@@ -32,14 +30,7 @@ function Rentals({
       />
       <h2>Homes and Apartments for Rent</h2>
       <div>{allRentals}</div>
-      {/* <Map rentals={rentals} /> */}
-      <Wrapper
-        apiKey={process.env.REACT_APP_API_KEY}
-        version="beta"
-        libraries={["marker"]}
-      >
-        <MyMap rentals={rentals} setRentals={setRentals} />
-      </Wrapper>
+      <Map rentals={rentals} />
     </div>
   );
 }

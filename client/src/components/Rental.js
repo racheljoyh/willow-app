@@ -1,10 +1,14 @@
 import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import ApplicationPopup from "./ApplicationPopup";
+import styles from "react-responsive-carousel/lib/styles/carousel.min.css";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from "react-responsive-carousel";
 
 function Rental({ rental }) {
   const [isOpen, setIsOpen] = useState(false);
   const {
+    images,
     price,
     description,
     bedrooms,
@@ -26,23 +30,30 @@ function Rental({ rental }) {
     setIsOpen(!isOpen);
   };
 
+  const listingImages = images.map((image) => {
+    return <img key={image.id} src={image.url} />;
+  });
+
   return (
-    <div>
-      {/* <div>{allImages}</div> */}
-      <p>${price.toLocaleString("en-US")}/month</p>
-      <p>{address}</p>
-      <p>Square footage: {footage}</p>
-      <p>Bedrooms: {bedrooms}</p>
-      <p>Bathrooms: {bathrooms}</p>
-      <p>Date available: {date_available}</p>
+    <div className="listing-container">
+      <Carousel width="30%">{listingImages}</Carousel>
+      <div>
+        <p>${price.toLocaleString("en-US")}/month</p>
+        <p>{address}</p>
+        <p>{footage} sq ft.</p>
+        <p>
+          {bedrooms} bd, {bathrooms} ba
+        </p>
+        <p>Date available: {date_available}</p>
 
-      <p>{description}</p>
-      <p>Listing Agent: {property_owner}</p>
+        <p>{description}</p>
+        <p>Listing Agent: {property_owner}</p>
 
-      <button onClick={togglePopup}>Apply</button>
-      {isOpen === true ? (
-        <ApplicationPopup handleClose={handleClose} rental={rental} />
-      ) : null}
+        <button onClick={togglePopup}>Apply</button>
+        {isOpen === true ? (
+          <ApplicationPopup handleClose={handleClose} rental={rental} />
+        ) : null}
+      </div>
     </div>
   );
 }
