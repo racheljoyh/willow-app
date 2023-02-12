@@ -20,6 +20,13 @@ l1 = Listing.create(creator_id: u1.id, price: 1500, footage: 650, bedrooms: 1, b
 
 l2 = Listing.create(creator_id: u2.id, price: 1800, footage: 586, bedrooms: 0, bathrooms: 1, description: "Studio available! Our South Broadway Apartments in Baker are the latest addition to the quickly growing neighborhood. Near the Design District, University of Denver and more, residents will enjoy a premium location near the area's main drag, along with high-end features available right at home.", date_available: Date.parse("March 08 2023"),  property_owner: 'AMLI Broadway Park', address: '357 S Bannock St., Denver CO 80223', images:[""])
 
+l1.images.attach(
+  io: File.open(Rails.root.join('db/images/default-placeholder.png')),
+  filename: 'default-placeholder.png',
+  content_type: 'image/png'
+)
+
+
 
 
 puts 'Seeding applications'

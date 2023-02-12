@@ -25,8 +25,6 @@ function MyRental({ myRental, setMyRentals, handleDelete }) {
     <img key={image.id} src={image.url} />
   ));
 
-  console.log(listingImages);
-
   return (
     <div key={myRental.id}>
       <div>{listingImages}</div>
