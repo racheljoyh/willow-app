@@ -1,15 +1,12 @@
 import { useContext, useState, useRef } from "react";
-import { useNavigate } from "react-router-dom";
 import { UserContext } from "../Context/UserProvider";
 
-function RentalForm({ setMyRentals, setIsOpen }) {
+function RentalForm({ setMyRentals }) {
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState([]);
-  const [uploadedFiles, setUploadedFiles] = useState([]);
   const imagesRef = useRef([]);
 
   let { currentUser } = useContext(UserContext);
-  let navigate = useNavigate();
 
   const [formData, setFormData] = useState({
     creator_id: "",
@@ -54,26 +51,7 @@ function RentalForm({ setMyRentals, setIsOpen }) {
     handleSubmit(submitData);
   }
 
-  // function handleFileEvent(e) {
-  //   setUploadedFiles({
-  //     images: e.target.files[(0, 2)],
-  //   });
-  // }
-
   function handleSubmit(submitData) {
-    // const newListing = {
-    //   creator_id: currentUser.id,
-    //   images: formData.images,
-    //   price: formData.price,
-    //   footage: formData.footage,
-    //   bedrooms: formData.bedrooms,
-    //   bathrooms: formData.bathrooms,
-    //   description: formData.description,
-    //   date_available: formData.date_available,
-    //   property_owner: formData.property_owner,
-    //   address: formData.address,
-    // };
-
     setErrors([]);
     setIsLoading(true);
 
@@ -93,23 +71,6 @@ function RentalForm({ setMyRentals, setIsOpen }) {
     });
   }
 
-  // function handleFileEvent(e) {
-  //   const chosenFiles = Array.prototype.slice.call(e.target.files);
-  //   handleUploadFiles(chosenFiles);
-  //   console.log(e.target.files);
-  // }
-
-  // function handleUploadFiles(files) {
-  //   const uploaded = [...uploadedFiles];
-  //   files.some((file) => {
-  //     return uploaded.push(file);
-  //   });
-
-  //   setUploadedFiles(uploaded);
-  // }
-
-  console.log(imagesRef);
-
   return (
     <div>
       <form>
@@ -121,7 +82,6 @@ function RentalForm({ setMyRentals, setIsOpen }) {
           multiple
           ref={imagesRef}
           name="image"
-          // onChange={handleFileEvent}
         />
         <label>Price: </label>
         <input
