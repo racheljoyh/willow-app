@@ -36,7 +36,7 @@ function Rental({ rental }) {
 
   return (
     <div className="listing-container">
-      <Carousel width="30%">{listingImages}</Carousel>
+      <Carousel width="70%">{listingImages}</Carousel>
       <div>
         <p>${price.toLocaleString("en-US")}/month</p>
         <p>{address}</p>

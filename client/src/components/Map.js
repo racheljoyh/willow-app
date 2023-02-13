@@ -7,7 +7,7 @@ import {
 } from "@react-google-maps/api";
 
 const containerStyle = {
-  width: "90vw",
+  width: "50vw",
   height: "50vh",
 };
 
@@ -52,7 +52,7 @@ const Map = ({ rentals }) => {
           }}
         >
           <div>
-            <img src={selected.image} />
+            <img src={selected.images[0].url} />
             <p>${selected.price.toLocaleString("en-US")}</p>
             <p>
               {selected.bedrooms} bd, {selected.bathrooms} ba

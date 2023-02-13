@@ -59,6 +59,11 @@ img {
 }
 
 .map {
-  width: 90vw;
+  width: 50vw;
   height: 50vh;
+}
+
+.rental-container {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
 }

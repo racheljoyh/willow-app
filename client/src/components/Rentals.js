@@ -28,9 +28,12 @@ function Rentals({
         setFilterByBath={setFilterByBath}
         filterByBath={filterByBath}
       />
-      <h2>Homes and Apartments for Rent</h2>
-      <div>{allRentals}</div>
-      <Map rentals={rentals} />
+      <div className="rental-container">
+        <div>
+          <Map rentals={rentals} />
+        </div>
+        <div>{allRentals}</div>
+      </div>
     </div>
   );
 }

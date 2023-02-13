@@ -10,10 +10,7 @@ function EditListingPopup({ handleClose, myRental, setMyRentals }) {
     description,
     date_available,
     property_owner,
-    street,
-    city,
-    state,
-    zip,
+    address,
   } = myRental;
 
   const [isLoading, setIsLoading] = useState(false);
@@ -28,10 +25,7 @@ function EditListingPopup({ handleClose, myRental, setMyRentals }) {
     description: description,
     date_available: date_available,
     property_owner: property_owner,
-    street: street,
-    city: city,
-    state: state,
-    zip: zip,
+    address: address,
   });
 
   function handleSubmit(e) {
@@ -125,32 +119,11 @@ function EditListingPopup({ handleClose, myRental, setMyRentals }) {
               value={formData.property_owner}
               onChange={handleOnChange}
             />
-            <label>Street: </label>
+            <label>Address: </label>
             <input
               type="text"
-              name="street"
-              value={formData.street}
-              onChange={handleOnChange}
-            />
-            <label>City: </label>
-            <input
-              type="text"
-              name="city"
-              value={formData.city}
-              onChange={handleOnChange}
-            />
-            <label>State: </label>
-            <input
-              type="text"
-              name="state"
-              value={formData.state}
-              onChange={handleOnChange}
-            />
-            <label>Zip: </label>
-            <input
-              type="text"
-              name="zip"
-              value={formData.zip}
+              name="address"
+              value={formData.address}
               onChange={handleOnChange}
             />
 

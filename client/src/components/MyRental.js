@@ -1,5 +1,7 @@
 import { useState } from "react";
 import EditListingPopup from "./EditListingPopup";
+import "react-responsive-carousel/lib/styles/carousel.min.css"; // requires a loader
+import { Carousel } from "react-responsive-carousel";
 
 function MyRental({ myRental, setMyRentals, handleDelete }) {
   const [isOpen, setIsOpen] = useState(false);
@@ -27,9 +29,9 @@ function MyRental({ myRental, setMyRentals, handleDelete }) {
 
   return (
     <div key={myRental.id}>
-      <div>{listingImages}</div>
+      <Carousel width="30%">{listingImages}</Carousel>
       <p>{myRental.address}</p>
-      <p>${myRental.price}/month</p>
+      <p>${myRental.price.toLocaleString("en-US")}/month</p>
       <p>Square footage: {myRental.footage}</p>
       <p>Bedrooms: {myRental.bedrooms}</p>
       <p>Bathrooms: {myRental.bathrooms}</p>
