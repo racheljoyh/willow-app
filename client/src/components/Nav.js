@@ -1,6 +1,7 @@
 import React, { useContext } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
 import { UserContext } from "../Context/UserProvider";
+import Logo from "./images/willow-high-resolution-logo-color-on-transparent-background.png";
 
 function Nav() {
   let { currentUser, setCurrentUser } = useContext(UserContext);
@@ -18,38 +19,57 @@ function Nav() {
 
   if (!currentUser)
     return (
-      <div>
-        <ul>
-          <li>
-            <NavLink to="/">Home</NavLink>
-          </li>
-          <li>
-            <NavLink to="/homes/for_rent">Rent</NavLink>
-          </li>
-          <li>
-            <NavLink to="/login">Sign in</NavLink>
-          </li>
-        </ul>
+      <div className="header">
+        <p className="greeting"></p>
+        <img className="logo" src={Logo} alt="logo" />
+        <nav className="main-nav">
+          <ul className="main-nav-list">
+            <li>
+              <NavLink className="main-nav-link" to="/">
+                Home
+              </NavLink>
+            </li>
+            <li>
+              <NavLink className="main-nav-link" to="/homes/for_rent">
+                Rent
+              </NavLink>
+            </li>
+            <li>
+              <NavLink className="main-nav-link" to="/login">
+                Sign in
+              </NavLink>
+            </li>
+          </ul>
+        </nav>
       </div>
     );
 
   return (
-    <div>
-      <p className="greeting">Welcome, {currentUser.first_name} </p>
-      <ul>
-        <li>
-          <NavLink to="/">Home</NavLink>
-        </li>
-        <li>
-          <NavLink to="/homes/for_rent">Rent</NavLink>
-        </li>
-        <li>
-          <NavLink to="/mywillow">Account</NavLink>
-        </li>
-        <li>
-          <button onClick={handleLogoutClick}>Logout</button>
-        </li>
-      </ul>
+    <div className="header">
+      <p className="greeting">Hi, {currentUser.first_name}!</p>
+      <img className="logo" src={Logo} alt="logo" />
+      <nav className="main-nav">
+        <ul className="main-nav-list">
+          <li>
+            <NavLink className="main-nav-link" to="/">
+              Home
+            </NavLink>
+          </li>
+          <li>
+            <NavLink className="main-nav-link" to="/homes/for_rent">
+              Rent
+            </NavLink>
+          </li>
+          <li>
+            <NavLink className="main-nav-link" to="/mywillow">
+              Account
+            </NavLink>
+          </li>
+          <button className="btn --nav-btn" onClick={handleLogoutClick}>
+            Logout
+          </button>
+        </ul>
+      </nav>
     </div>
   );
 }

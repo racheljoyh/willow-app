@@ -1,5 +1,131 @@
-img {
+/**************************/
+/* HEADER */
+/**************************/
+.header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background-color: rgba(255, 255, 255, 1);
+
+  /* Because we want header to be sticky later */
+  /* height: 15rem; */
+  padding: 1.8rem 2.4rem;
+  border-bottom: solid 1px #d1d1d5;
+}
+
+.sticky {
+  position: fixed;
+  top: 0;
+  width: 100%;
+}
+
+.errors {
+  color: #f03e3e;
+  font-size: 2.2rem;
+  margin-top: 2rem;
+}
+
+/**************************/
+/* NAVIGATION */
+/**************************/
+
+.logo {
+  height: 4.8rem;
+  margin-left: 14.8rem;
+}
+
+.greeting {
+  color: #5c940d;
+  font-weight: 500;
+  font-size: 1.6rem;
+}
+
+.--nav-btn {
+  padding: 1.2rem 1.2rem;
+  font-size: 1.6rem;
+}
+
+.header-name {
+  font-size: 3.6rem;
+  color: #5c940d;
+  font-family: "Merriweather", sans-serif;
+  margin-left: 1.2rem;
+}
+
+.main-nav-list {
+  list-style: none;
+  display: flex;
+  align-items: center;
+  gap: 3.2rem;
+}
+
+.main-nav-link:link,
+.main-nav-link:visited {
+  display: inline-block;
+  text-decoration: none;
+  color: rgb(42, 42, 53);
+  font-weight: 500;
+  font-size: 1.6rem;
+  transition: all 0.3s;
+}
+
+.main-nav-link:hover,
+.main-nav-link:active {
+  color: #93cf3f;
+}
+
+.main-nav-link.nav-cta:link,
+.main-nav-link.nav-cta:visited {
+  padding: 1.2rem 2.4rem;
+  border-radius: 9px;
+  color: #fff;
+  background-color: #c92a2a;
+}
+
+/**************************/
+/* HERO SECTION */
+/**************************/
+
+.hero-container {
+  position: relative;
+  text-align: center;
+  color: white;
+}
+
+.centered {
+  position: absolute;
+  font-size: 3.6rem;
+  font-family: "Merriweather", sans-serif;
+  top: 50%;
+  left: 50%;
+  text-shadow: rgb(0, 0, 0) 5px 0 10px;
+  transform: translate(-50%, -50%);
+}
+
+.--header-btn {
+  position: absolute;
+  font-size: 1.6rem;
+  top: 70%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+}
+
+.header-image {
+  width: 100vw;
+  height: 400px;
+  object-fit: cover;
+}
+
+.listing-img {
   width: 300px;
+}
+
+.cta-container {
+  display: grid;
+}
+
+.card-image {
+  height: 3.2rem;
 }
 
 /* Popup style */
