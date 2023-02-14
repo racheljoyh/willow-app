@@ -31,7 +31,9 @@ function Rentals({
         <div className="map">
           <Map rentals={rentals} />
         </div>
-        <div className="rental-listings-container">{allRentals}</div>
+        <div className="rental-listings-container grid--2-cols">
+          {allRentals}
+        </div>
       </div>
     </div>
   );

@@ -22,8 +22,6 @@ function ManageRentals() {
       });
   }, [currentUser]);
 
-  
-
   function handleDelete(deletedRental) {
     const updatedRentals = myRentals.filter(
       (rental) => rental.id !== deletedRental.id
@@ -46,7 +44,7 @@ function ManageRentals() {
   if (allMyRentals.length === 0)
     return (
       <div>
-        <button onClick={togglePopup}>
+        <button className="btn" onClick={togglePopup}>
           {isOpen ? "Close" : "Add Listing"}
         </button>
         <p>You currently have no listings...</p>
@@ -58,7 +56,9 @@ function ManageRentals() {
 
   return (
     <div>
-      <button onClick={togglePopup}>{isOpen ? "Close" : "Add Listing"}</button>
+      <button className="btn" onClick={togglePopup}>
+        {isOpen ? "Close" : "Add Listing"}
+      </button>
       {isOpen === true ? (
         <RentalForm setIsOpen={setIsOpen} setMyRentals={setMyRentals} />
       ) : null}

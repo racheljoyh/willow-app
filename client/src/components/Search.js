@@ -19,6 +19,7 @@ function Search({
         onChange={handleSearchChange}
         placeholder="Enter an address, city, or ZIP code"
       />
+
       <label>
         <strong> Bedrooms: </strong>
         <select

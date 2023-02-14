@@ -4,9 +4,15 @@ function Account() {
   return (
     <div>
       <h3>My Account</h3>
-      <Link to="my_rentals">Manage Rentals</Link>
-      <Link to="my_applications">My Applications</Link>
-      <Link to="account_info">Account Information</Link>
+      <Link className="main-nav-link" to="my_rentals">
+        Manage Rentals
+      </Link>
+      <Link className="main-nav-link" to="my_applications">
+        My Applications
+      </Link>
+      <Link className="main-nav-link" to="account_info">
+        Account Information
+      </Link>
       <Outlet />
     </div>
   );

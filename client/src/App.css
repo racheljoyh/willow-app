@@ -81,6 +81,19 @@
   background-color: #c92a2a;
 }
 
+.user-nav {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.user-icon {
+  width: 36px;
+  height: 36px;
+  margin-right: 1.2rem;
+  stroke: #3e363f;
+}
+
 /**************************/
 /* HERO SECTION */
 /**************************/
@@ -170,6 +183,12 @@
   border-radius: 2px;
 }
 
+.search-btn-icon {
+  width: 20px;
+  height: 20px;
+  object-fit: cover;
+}
+
 .filter-bars {
   font-size: 1.6rem;
   width: 100px;
@@ -183,6 +202,7 @@
   display: flex;
   align-items: center;
   flex-direction: column;
+  row-gap: 3rem;
   height: 83vh;
   overflow-y: auto;
   position: absolute;
@@ -197,12 +217,34 @@
   position: relative;
 }
 
+.listing-container {
+  background-color: #fff;
+  box-shadow: 0 0.4rem 0.5rem rgba(0, 0, 0, 0.355);
+  border-radius: 3px;
+  padding: 3.2rem;
+}
+
 .info-window-img {
   width: 300px;
 }
 
 .listing-details p {
   font-size: 1.6rem;
+  margin-bottom: 1.6rem;
+  line-height: 1.2;
+}
+
+.--details-btn {
+  margin-right: 1.2rem;
+}
+
+.listing-details p:first-child {
+  font-size: 2rem;
+  font-weight: bold;
+}
+
+.building-overview {
+  margin-bottom: 0.5rem !important;
 }
 
 /* Popup style */
