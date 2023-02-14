@@ -35,8 +35,8 @@ function Rental({ rental }) {
 
   return (
     <div className="listing-container">
-      <Carousel width="70%">{listingImages}</Carousel>
-      <div>
+      <Carousel width="100%">{listingImages}</Carousel>
+      <div className="listing-details">
         <p>${price.toLocaleString("en-US")}/month</p>
         <p>{address}</p>
         <p>{footage} sq ft.</p>
@@ -48,7 +48,9 @@ function Rental({ rental }) {
         <p>{description}</p>
         <p>Listing Agent: {property_owner}</p>
 
-        <button onClick={togglePopup}>Apply</button>
+        <button className="btn" onClick={togglePopup}>
+          Apply
+        </button>
         {isOpen === true ? (
           <ApplicationPopup handleClose={handleClose} rental={rental} />
         ) : null}

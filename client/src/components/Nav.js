@@ -1,7 +1,8 @@
 import React, { useContext } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
 import { UserContext } from "../Context/UserProvider";
-import Logo from "./images/willow-high-resolution-logo-color-on-transparent-background.png";
+import Logo from "./images/willow-high-resolution-logo-color-on-transparent-background (1).png";
+import navImg from "./images/nav-image.png";
 
 function Nav() {
   let { currentUser, setCurrentUser } = useContext(UserContext);
@@ -46,7 +47,8 @@ function Nav() {
 
   return (
     <div className="header">
-      <p className="greeting">Hi, {currentUser.first_name}!</p>
+      <p className="greeting">Hello, {currentUser.first_name}!</p>
+
       <img className="logo" src={Logo} alt="logo" />
       <nav className="main-nav">
         <ul className="main-nav-list">

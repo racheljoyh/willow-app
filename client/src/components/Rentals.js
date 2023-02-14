@@ -10,7 +10,6 @@ function Rentals({
   setFilterByBedrooms,
   setFilterByBath,
   filterByBath,
-  setRentals,
 }) {
   const allRentals = rentals.map((rental) => (
     <Rental key={rental.id} rental={rental} />
@@ -29,10 +28,10 @@ function Rentals({
         filterByBath={filterByBath}
       />
       <div className="rental-container">
-        <div>
+        <div className="map">
           <Map rentals={rentals} />
         </div>
-        <div>{allRentals}</div>
+        <div className="rental-listings-container">{allRentals}</div>
       </div>
     </div>
   );

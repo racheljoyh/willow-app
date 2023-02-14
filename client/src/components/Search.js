@@ -11,8 +11,9 @@ function Search({
   }
 
   return (
-    <div>
+    <div className="search-container">
       <input
+        className="search-bar"
         type="text"
         value={searchQuery}
         onChange={handleSearchChange}
@@ -23,6 +24,7 @@ function Search({
         <select
           onChange={(e) => setFilterByBedrooms(e.target.value)}
           value={filterByBedrooms}
+          className="filter-bars"
         >
           <option value="Any">Any</option>
           <option value="0">Studio</option>
@@ -36,6 +38,7 @@ function Search({
         <select
           onChange={(e) => setFilterByBath(e.target.value)}
           value={filterByBath}
+          className="filter-bars"
         >
           <option value="Any">Any</option>
           <option value="1">1</option>
