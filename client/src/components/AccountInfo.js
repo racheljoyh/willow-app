@@ -16,7 +16,6 @@ function AccountInfo() {
     email: email,
     income: income,
     dob: dob,
-    employed: employed,
     employer: employer,
   });
 
@@ -48,63 +47,58 @@ function AccountInfo() {
   }
 
   return (
-    <div>
-      <form onSubmit={handleUpdateUser}>
-        <h2 className="heading-secondary">Update User Information</h2>
-        <label>First Name: </label>
-        <input
-          type="text"
-          name="first_name"
-          value={formData.first_name}
-          onChange={handleOnChange}
-        />
-        <label>Last Name </label>
-        <input
-          type="text"
-          name="last_name"
-          value={formData.last_name}
-          onChange={handleOnChange}
-        />
-        <label>DOB: </label>
-        <input
-          type="date"
-          name="dob"
-          value={formData.dob}
-          onChange={handleOnChange}
-        />
-        <label>Email: </label>
-        <input
-          type="text"
-          name="email"
-          value={formData.email}
-          onChange={handleOnChange}
-        />
-        <label>Employed: </label>
-        <select
-          name="employed"
-          value={formData.employed}
-          onChange={handleOnChange}
-        >
-          <option></option>
-          <option value="true">Yes</option>
-          <option value="false">No</option>
-        </select>
-        <label>Employer: </label>
-        <input
-          type="text"
-          name="employer"
-          value={formData.employer}
-          onChange={handleOnChange}
-        />
-        <label>Income: </label>
-        <input
-          type="number"
-          name="income"
-          value={formData.income}
-          onChange={handleOnChange}
-        />
-
-        <button type="submit">{isLoading ? "Loading..." : "Update"}</button>
+    <div className="form-container ">
+      {/* <h3 className="heading-tertiary">User Information</h3> */}
+      <form className="form-update grid--2-cols" onSubmit={handleUpdateUser}>
+        <div className="form-column">
+          <label>First Name: </label>
+          <input
+            type="text"
+            name="first_name"
+            value={formData.first_name}
+            onChange={handleOnChange}
+          />
+          <label>Last Name </label>
+          <input
+            type="text"
+            name="last_name"
+            value={formData.last_name}
+            onChange={handleOnChange}
+          />
+          <label>DOB: </label>
+          <input
+            type="date"
+            name="dob"
+            value={formData.dob}
+            onChange={handleOnChange}
+          />
+        </div>
+        <div className="form-column">
+          <label>Email: </label>
+          <input
+            type="text"
+            name="email"
+            value={formData.email}
+            onChange={handleOnChange}
+          />
+          <label>Employer: </label>
+          <input
+            type="text"
+            name="employer"
+            value={formData.employer}
+            onChange={handleOnChange}
+          />
+          <label>Income: $ </label>
+          <input
+            type="number"
+            name="income"
+            value={formData.income}
+            onChange={handleOnChange}
+          />
+        </div>
+        <button className="btn --user-form-btn" type="submit">
+          {isLoading ? "Loading..." : "Update"}
+        </button>
       </form>
       <div className="errors">
         {errors.map((err) => (

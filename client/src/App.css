@@ -177,10 +177,10 @@
 
 .search-bar {
   font-size: 1.6rem;
-  width: 500px;
+  width: 600px;
   border: solid 1px #d1d1d5;
+  border-radius: 3px;
   padding: 1rem;
-  border-radius: 2px;
 }
 
 .search-btn-icon {
@@ -196,6 +196,7 @@
   padding: 1rem;
   border-radius: 2px;
   text-align: center;
+  border-radius: 3px;
 }
 
 .rental-listings-container {
@@ -245,6 +246,53 @@
 
 .building-overview {
   margin-bottom: 0.5rem !important;
+}
+
+/**************************/
+/* USER SECTION */
+/**************************/
+
+.form-container {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  padding-top: 9.6rem;
+  background-color: rgb(255, 255, 255);
+}
+
+.form-update {
+  display: grid;
+  column-gap: 1.8rem;
+  max-width: 50rem;
+}
+
+.form-column {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  max-width: 120rem;
+}
+
+.form-column input {
+  padding: 1.2rem;
+  font-size: 1.6rem;
+  font-family: inherit;
+  color: inherit;
+  border: none;
+  border-radius: 3px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+}
+
+.form-column label {
+  display: block;
+  font-size: 2rem;
+  font-weight: 500;
+  margin: 1.2rem 0;
+}
+
+.--user-form-btn {
+  margin-top: 1.2rem;
 }
 
 /* Popup style */
