@@ -1,7 +1,7 @@
 import { useContext, useState, useRef } from "react";
 import { UserContext } from "../Context/UserProvider";
 
-function RentalForm({ setMyRentals }) {
+function RentalForm({ setMyRentals, handleClose }) {
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState([]);
   const imagesRef = useRef([]);
@@ -72,82 +72,101 @@ function RentalForm({ setMyRentals }) {
   }
 
   return (
-    <div>
-      <form>
-        <h2 className="heading-secondary">Add New Listing</h2>
-        <label>Images: </label>
-        <input
-          type="file"
-          accept="images/*"
-          multiple
-          ref={imagesRef}
-          name="image"
-        />
-        <label>Price: </label>
-        <input
-          type="number"
-          name="price"
-          value={formData.price}
-          onChange={handleOnChange}
-        />
-        <label>Footage: </label>
-        <input
-          type="number"
-          name="footage"
-          value={formData.footage}
-          onChange={handleOnChange}
-        />
-        <label>Number of bedrooms: </label>
-        <input
-          type="number"
-          name="bedrooms"
-          value={formData.bedrooms}
-          onChange={handleOnChange}
-        />
-        <label>Number of bathrooms: </label>
-        <input
-          type="number"
-          name="bathrooms"
-          value={formData.bathrooms}
-          onChange={handleOnChange}
-        />
-        <label>Summary of listing: </label>
-        <input
-          type="text"
-          name="description"
-          value={formData.description}
-          onChange={handleOnChange}
-        />
-        <label>Date available: </label>
-        <input
-          type="date"
-          name="date_available"
-          value={formData.date_available}
-          onChange={handleOnChange}
-        />
-        <label>Property owner or management entity: </label>
-        <input
-          type="text"
-          name="property_owner"
-          value={formData.property_owner}
-          onChange={handleOnChange}
-        />
-        <label>Address: </label>
-        <input
-          type="text"
-          name="address"
-          value={formData.address}
-          onChange={handleOnChange}
-        />
-
-        <button onClick={handleUpload} className="btn login-btn" type="submit">
-          {isLoading ? "Loading..." : "Submit"}
-        </button>
-      </form>
-      <div className="errors">
-        {errors.map((err) => (
-          <p key={err}>{err}!</p>
-        ))}
+    <div className="popup-box">
+      <div className="box">
+        <span className="close-icon" onClick={handleClose}>
+          x
+        </span>
+        <h3 className="heading-tertiary">Add listing</h3>
+        <div className="popup-details">
+          <div className="form-container-add">
+            <form className="form-add">
+              <div className="form-column-add">
+                <label>Images: </label>
+                <input
+                  type="file"
+                  accept="images/*"
+                  multiple
+                  ref={imagesRef}
+                  name="image"
+                />
+                <label>Address: </label>
+                <input
+                  type="text"
+                  name="address"
+                  value={formData.address}
+                  onChange={handleOnChange}
+                />
+                <label>Price: </label>
+                <input
+                  type="number"
+                  name="price"
+                  value={formData.price}
+                  onChange={handleOnChange}
+                />
+                <label>Footage: </label>
+                <input
+                  type="number"
+                  name="footage"
+                  value={formData.footage}
+                  onChange={handleOnChange}
+                />
+                <div className="bed-bath-column">
+                  <label>Bd: </label>
+                  <input
+                    type="number"
+                    name="bedrooms"
+                    value={formData.bedrooms}
+                    onChange={handleOnChange}
+                  />
+                  <label>Ba: </label>
+                  <input
+                    type="number"
+                    name="bathrooms"
+                    value={formData.bathrooms}
+                    onChange={handleOnChange}
+                  />
+                </div>
+              </div>
+              <div className="form-column-add">
+                <label>Date available: </label>
+                <input
+                  type="date"
+                  name="date_available"
+                  value={formData.date_available}
+                  onChange={handleOnChange}
+                />
+                <label>Property owner or management entity: </label>
+                <input
+                  type="text"
+                  name="property_owner"
+                  value={formData.property_owner}
+                  onChange={handleOnChange}
+                />
+                <label>Summary of listing: </label>
+                <input
+                  className="summary"
+                  type="text"
+                  name="description"
+                  value={formData.description}
+                  onChange={handleOnChange}
+                />
+              </div>
+              <button
+                onClick={handleUpload}
+                className="btn btn-add"
+                type="submit"
+              >
+                {isLoading ? "Loading..." : "Submit"}
+              </button>
+            </form>
+            <div className="errors">
+              {errors.map((err) => (
+                <p key={err}>{err}!</p>
+              ))}
+            </div>
+          </div>
+        </div>
       </div>
     </div>
   );

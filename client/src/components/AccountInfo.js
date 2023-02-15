@@ -7,8 +7,7 @@ function AccountInfo() {
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState([]);
 
-  const { first_name, last_name, email, income, dob, employed, employer } =
-    currentUser;
+  const { first_name, last_name, email, income, dob, employer } = currentUser;
 
   const [formData, setFormData] = useState({
     first_name: first_name,
@@ -47,7 +46,7 @@ function AccountInfo() {
   }
 
   return (
-    <div className="form-container ">
+    <div className="form-container">
       {/* <h3 className="heading-tertiary">User Information</h3> */}
       <form className="form-update grid--2-cols" onSubmit={handleUpdateUser}>
         <div className="form-column">

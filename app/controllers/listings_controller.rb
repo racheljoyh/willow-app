@@ -22,7 +22,8 @@ class ListingsController < ApplicationController
   # /listings/:id
   def update 
     listing = Listing.find(params[:id])
-    listing.update(listing_params)
+    listing.update(listing_params.except(:images))
+    
     render json: listing, status: :ok
   end
 

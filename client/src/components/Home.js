@@ -3,8 +3,11 @@ import Header from "./images/vu-anh-TiVPTYCG_3E-unsplash.jpg";
 import ctaImg1 from "./images/cta-image1.png";
 import ctaImg2 from "./images/cta-image2.png";
 import ctaImg3 from "./images/cta-image3.png";
+import { UserContext } from "../Context/UserProvider";
+import { useContext } from "react";
 
 function Home() {
+  let { currentUser } = useContext(UserContext);
   let navigate = useNavigate();
 
   function redirect() {
@@ -45,12 +48,24 @@ function Home() {
             Voluptatem alias amet necessitatibus dolore consequuntur sint sit
             eligendi odit enim commodi non delectus.
           </p>
-          <button
-            onClick={() => navigate("/mywillow/my_rentals")}
-            className="btn --card-btn"
-          >
-            My rentals
-          </button>
+          {currentUser ? (
+            <button
+              onClick={() => navigate("/mywillow/my_rentals")}
+              className="btn --card-btn"
+            >
+              My rentals
+            </button>
+          ) : (
+            <button
+              onClick={() => {
+                alert("Please login first!");
+                navigate("/login");
+              }}
+              className="btn --card-btn"
+            >
+              My rentals
+            </button>
+          )}
         </div>
         <div className="card">
           <img
@@ -63,12 +78,24 @@ function Home() {
             amet dolores nisi veniam cum mollitia illo quia odio natus, ipsum
             cupiditate!
           </p>
-          <button
-            onClick={() => navigate("/mywillow/my_applications")}
-            className="btn --card-btn"
-          >
-            View applications
-          </button>
+          {currentUser ? (
+            <button
+              onClick={() => navigate("/mywillow/my_applications")}
+              className="btn --card-btn"
+            >
+              View applications
+            </button>
+          ) : (
+            <button
+              onClick={() => {
+                alert("Please login first!");
+                navigate("/login");
+              }}
+              className="btn --card-btn"
+            >
+              View applications
+            </button>
+          )}
         </div>
       </div>
     </>
