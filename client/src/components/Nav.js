@@ -1,8 +1,8 @@
 import React, { useContext } from "react";
 import { useNavigate, NavLink } from "react-router-dom";
 import { UserContext } from "../Context/UserProvider";
+
 import Logo from "./images/willow-high-resolution-logo-color-on-transparent-background (1).png";
-import navImg from "./images/nav-image.png";
 
 function Nav() {
   let { currentUser, setCurrentUser } = useContext(UserContext);
@@ -80,13 +80,30 @@ function Nav() {
             </NavLink>
           </li>
           <li>
-            <NavLink className="main-nav-link" to="/mywillow">
-              Account
-            </NavLink>
+            <div className="dropdownNavBar">
+              <div className="dropdown">
+                <li className="main-nav-link NavBarDropdownBtn">Account</li>
+                <nav className="dropdown-content">
+                  <NavLink className="main-nav-link" to="/my_rentals">
+                    Manage Rentals
+                  </NavLink>
+                  <NavLink className="main-nav-link" to="/my_applications">
+                    My Applications
+                  </NavLink>
+                  <NavLink className="main-nav-link" to="/account_info">
+                    Account Information
+                  </NavLink>
+                  <NavLink
+                    className="main-nav-link"
+                    to="/"
+                    onClick={handleLogoutClick}
+                  >
+                    Logout
+                  </NavLink>
+                </nav>
+              </div>
+            </div>
           </li>
-          <button className="btn --nav-btn" onClick={handleLogoutClick}>
-            Logout
-          </button>
         </ul>
       </nav>
     </div>

@@ -144,7 +144,7 @@ function RentalForm({ setMyRentals, handleClose }) {
                   onChange={handleOnChange}
                 />
                 <label>Summary of listing: </label>
-                <input
+                <textarea
                   className="summary"
                   type="text"
                   name="description"

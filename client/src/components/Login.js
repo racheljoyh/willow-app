@@ -41,9 +41,9 @@ function Login() {
   }
 
   return (
-    <div>
-      <form onSubmit={handleSubmit}>
-        <h2>Please Login</h2>
+    <div className="form-container">
+      <form className="form-signin" onSubmit={handleSubmit}>
+        <h3 className="heading-tertiary">Please Login</h3>
         <label>Username: </label>
         <input
           type="text"
@@ -58,13 +58,17 @@ function Login() {
           value={password}
           onChange={(e) => setPassword(e.target.value)}
         />
-        <button type="submit">{isLoading ? "Loading..." : "Login"}</button>
+        <button className="btn --login-btn" type="submit">
+          {isLoading ? "Loading..." : "Login"}
+        </button>
       </form>
-      <div>
+      <div className="cta-signup">
         <label> New to Willow?</label>
-        <button onClick={handleToSignupPage}>Sign Up</button>
+        <button className="btn" onClick={handleToSignupPage}>
+          Sign Up
+        </button>
       </div>
-      <div>
+      <div className="errors">
         {errors.map((err) => (
           <p key={err}>{err}!</p>
         ))}

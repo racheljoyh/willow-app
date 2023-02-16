@@ -7,12 +7,13 @@ function Applications() {
   const [applications, setApplications] = useState([]);
 
   useEffect(() => {
-    fetch(`/my_applications/${currentUser.id}`).then((r) => {
-      if (r.ok) {
-        r.json().then((apps) => setApplications(apps));
-      }
-    });
-  }, []);
+    if (currentUser)
+      fetch(`/my_applications/${currentUser.id}`).then((r) => {
+        if (r.ok) {
+          r.json().then((apps) => setApplications(apps));
+        }
+      });
+  }, [currentUser]);
 
   function handleDeleteApp(deletedApp) {
     const updatedApps = applications.filter((app) => app.id !== deletedApp.id);
@@ -26,7 +27,12 @@ function Applications() {
   if (allApps.length === 0)
     return <p>Start browsing our listings to find your new home!</p>;
 
-  return <div>{allApps}</div>;
+  return (
+    <div className="app-container">
+      <h3 className="heading-tertiary">My Applications</h3>
+      <div className="all-apps">{allApps}</div>
+    </div>
+  );
 }
 
 export default Applications;

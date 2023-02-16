@@ -7,7 +7,16 @@ function AccountInfo() {
   const [isLoading, setIsLoading] = useState(false);
   const [errors, setErrors] = useState([]);
 
-  const { first_name, last_name, email, income, dob, employer } = currentUser;
+  const {
+    first_name,
+    last_name,
+    email,
+    income,
+    dob,
+    employer,
+    password,
+    password_confirmation,
+  } = currentUser;
 
   const [formData, setFormData] = useState({
     first_name: first_name,
@@ -16,6 +25,8 @@ function AccountInfo() {
     income: income,
     dob: dob,
     employer: employer,
+    password: password,
+    password_confirmation: password_confirmation,
   });
 
   function handleUpdateUser(e) {
@@ -47,7 +58,7 @@ function AccountInfo() {
 
   return (
     <div className="form-container">
-      {/* <h3 className="heading-tertiary">User Information</h3> */}
+      <h3 className="heading-tertiary">Update user information</h3>
       <form className="form-update grid--2-cols" onSubmit={handleUpdateUser}>
         <div className="form-column">
           <label>First Name: </label>
@@ -69,6 +80,13 @@ function AccountInfo() {
             type="date"
             name="dob"
             value={formData.dob}
+            onChange={handleOnChange}
+          />
+          <label>Password: </label>
+          <input
+            type="password"
+            name="password"
+            value={formData.password}
             onChange={handleOnChange}
           />
         </div>
@@ -94,16 +112,23 @@ function AccountInfo() {
             value={formData.income}
             onChange={handleOnChange}
           />
+          <label>Password Confirmation: </label>
+          <input
+            type="password"
+            name="password"
+            value={formData.password_confirmation}
+            onChange={handleOnChange}
+          />
         </div>
         <button className="btn --user-form-btn" type="submit">
           {isLoading ? "Loading..." : "Update"}
         </button>
+        <div className="errors">
+          {errors.map((err) => (
+            <p key={err}>{err}!</p>
+          ))}
+        </div>
       </form>
-      <div className="errors">
-        {errors.map((err) => (
-          <p key={err}>{err}!</p>
-        ))}
-      </div>
     </div>
   );
 }

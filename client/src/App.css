@@ -94,6 +94,45 @@
   stroke: #3e363f;
 }
 
+.NavBarDropdownBtn {
+  border-radius: 100px;
+  max-height: 70px;
+  cursor: pointer;
+  margin-right: 15px;
+}
+
+.dropdown {
+  position: relative;
+  display: inline-block;
+}
+
+.dropdown-content {
+  display: none;
+  position: absolute;
+  min-width: 160px;
+  box-shadow: 0px 8px 16px 0px rgba(0, 0, 0, 0.2);
+  z-index: 1;
+  top: 105%;
+  left: -85%;
+}
+
+.dropdown-content a {
+  color: black;
+  padding: 20px 20px;
+  text-decoration: none;
+  display: block;
+  border-radius: 3px;
+}
+
+.dropdown-content a:hover {
+  background-color: #f1f1f1;
+}
+
+.dropdown:hover .dropdown-content {
+  display: block;
+  background-color: white;
+}
+
 /**************************/
 /* HERO SECTION */
 /**************************/
@@ -135,7 +174,10 @@
 .cta-container {
   display: grid;
   column-gap: 2.6rem;
-  padding: 9.6rem 5.4rem;
+  padding: 4.8rem;
+  margin: 3.2rem;
+  background-color: rgb(238, 234, 234);
+  border-radius: 3px;
 }
 
 .card {
@@ -214,6 +256,10 @@
   box-shadow: 0 0.4rem 0.5rem rgba(0, 0, 0, 0.355);
 }
 
+.btn-w-icon strong {
+  margin-right: 1.6rem;
+}
+
 .map {
   position: relative;
 }
@@ -262,15 +308,18 @@
 
 .form-update {
   display: grid;
-  column-gap: 1.8rem;
-  max-width: 50rem;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 2rem;
+  padding: 9.6rem;
+  box-shadow: 0 0.4rem 0.5rem rgba(0, 0, 0, 0.355);
+  border-radius: 11px;
+  background-color: #fff;
 }
 
 .form-column {
   display: flex;
   flex-direction: column;
   justify-content: center;
-  max-width: 120rem;
 }
 
 .form-column input {
@@ -281,12 +330,13 @@
   border: none;
   border-radius: 3px;
   box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  background-color: rgb(239, 239, 239);
 }
 
 .form-column label {
   display: block;
-  font-size: 2rem;
-  font-weight: 500;
+  font-size: 1.6rem;
+  font-weight: bold;
   margin: 1.2rem 0;
 }
 
@@ -344,7 +394,7 @@
 .form-column-add label {
   display: block;
   font-size: 1.6rem;
-  font-weight: 500;
+  font-weight: bold;
   margin: 1.2rem 0;
 }
 
@@ -400,6 +450,97 @@
 .--more-btn {
   margin-top: 2rem;
 }
+
+/**************************/
+/* SIGNIN SECTION */
+/**************************/
+
+.form-signin {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  padding: 9.6rem;
+  box-shadow: 0 0.4rem 0.5rem rgba(0, 0, 0, 0.355);
+  border-radius: 3px;
+  background-color: #fffafa;
+}
+
+.form-signin input {
+  padding: 1.2rem;
+  font-size: 1.6rem;
+  font-family: inherit;
+  width: 100%;
+  color: inherit;
+  border: none;
+  border-radius: 3px;
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.1);
+  background-color: rgb(239, 239, 239);
+}
+
+.form-signin label {
+  display: block;
+  font-size: 1.6rem;
+  font-weight: bold;
+  margin: 1.2rem 0 1.2rem 0;
+}
+
+.--signup {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  column-gap: 2rem;
+  padding: 9.6rem;
+  box-shadow: 0 0.4rem 0.5rem rgba(0, 0, 0, 0.355);
+  border-radius: 11px;
+  background-color: #fffafa;
+}
+
+.--login-btn {
+  margin-top: 3rem;
+  width: 100%;
+}
+
+.cta-signup {
+  margin-top: 2.4rem;
+}
+
+.cta-signup label {
+  font-size: 1.6rem;
+  font-weight: bold;
+  color: #293e2f;
+  margin-right: 1.4rem;
+}
+
+/**************************/
+/* Application SECTION */
+/**************************/
+
+.--submit-btn {
+  margin-top: 2.4rem;
+}
+
+.all-apps {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+
+  margin: 4.8rem;
+}
+
+.all-applications-card {
+  background-color: #fffafa;
+  box-shadow: 0 2.4rem 4.8rem rgba(0, 0, 0, 0.075);
+  border-radius: 3px;
+  padding: 4.8rem;
+  margin: 0 2.4rem 2.4rem 0;
+}
+.all-applications-card p {
+  font-size: 1.6rem;
+  margin-bottom: 1.2rem;
+}
+
+.app-container {
+  padding: 4.8rem;
+}
+
 /* Popup style */
 .popup-box {
   position: fixed;
@@ -455,4 +596,14 @@
 .marker:hover {
   background-color: white;
   color: red;
+}
+
+.errors {
+  color: #f03e3e;
+  font-size: 2.2rem;
+  margin-top: 2rem;
+}
+
+.errors p {
+  margin-bottom: 1.2rem;
 }
