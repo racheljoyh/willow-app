@@ -79,10 +79,10 @@ function Nav() {
               Rent
             </NavLink>
           </li>
-          <li>
+          <div>
             <div className="dropdownNavBar">
               <div className="dropdown">
-                <li className="main-nav-link NavBarDropdownBtn">Account</li>
+                <p className="main-nav-link NavBarDropdownBtn">Account</p>
                 <nav className="dropdown-content">
                   <NavLink className="main-nav-link" to="/my_rentals">
                     Manage Rentals
@@ -103,7 +103,7 @@ function Nav() {
                 </nav>
               </div>
             </div>
-          </li>
+          </div>
         </ul>
       </nav>
     </div>

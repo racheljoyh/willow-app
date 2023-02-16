@@ -50,7 +50,7 @@ function Home() {
           </p>
           {currentUser ? (
             <button
-              onClick={() => navigate("/mywillow/my_rentals")}
+              onClick={() => navigate("/my_rentals")}
               className="btn --card-btn"
             >
               My rentals
@@ -80,7 +80,7 @@ function Home() {
           </p>
           {currentUser ? (
             <button
-              onClick={() => navigate("/mywillow/my_applications")}
+              onClick={() => navigate("/my_applications")}
               className="btn --card-btn"
             >
               View applications

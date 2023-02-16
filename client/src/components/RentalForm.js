@@ -49,6 +49,7 @@ function RentalForm({ setMyRentals, handleClose }) {
     }
 
     handleSubmit(submitData);
+    handleClose();
   }
 
   function handleSubmit(submitData) {
@@ -64,6 +65,7 @@ function RentalForm({ setMyRentals, handleClose }) {
         r.json().then((data) => {
           console.log(data);
           setMyRentals((prevRentals) => [data, ...prevRentals]);
+          alert("Your listing has been successfully added!");
         });
       } else {
         r.json().then((err) => setErrors(err.errors));
