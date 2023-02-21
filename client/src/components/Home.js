@@ -15,7 +15,7 @@ function Home() {
   }
   return (
     <>
-      <div class="hero-container">
+      <div className="hero-container">
         <img className="header-image" src={Header} alt="home for sale" />
         <div className="centered">Find the place you can call home.</div>
         <button onClick={redirect} className="btn --header-btn">
