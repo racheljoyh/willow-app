@@ -4,6 +4,8 @@ Rails.application.routes.draw do
   resources :listings
   # route to test your configuration
 
+  root "listings#index"
+
   # session routes
   get '/me', to: "users#show"
   post "/login", to: "sessions#create"
