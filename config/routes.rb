@@ -4,7 +4,7 @@ Rails.application.routes.draw do
   resources :listings
   # route to test your configuration
 
-  root "listings#index"
+
 
   # session routes
   get '/me', to: "users#show"
@@ -22,6 +22,6 @@ Rails.application.routes.draw do
  # listing routes
  get 'my_listings/all', to: 'listings#user_listings'
  
-
+get "*path", to: "fallback#index", constraints: ->(req) { !req.xhr? && req.format.html? }
 
 end
