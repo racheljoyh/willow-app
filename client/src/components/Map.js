@@ -5,6 +5,7 @@ import {
   Marker,
   InfoWindow,
 } from "@react-google-maps/api";
+import axios from "axios";
 
 const containerStyle = {
   width: "100vw",
@@ -19,9 +20,26 @@ const center = {
 const Map = ({ rentals }) => {
   const [selected, setSelected] = useState(null);
 
+  const [apiKey, setApiKey] = useState("");
+
+  const options = {
+    method: "GET",
+    url: "http://localhost:8000/map",
+  };
+
+  axios
+    .request(options)
+    .then((response) => {
+      response.json(response.data);
+    })
+    .then((data) => setApiKey(data))
+    .catch((error) => {
+      console.error(error);
+    });
+
   const { isLoaded } = useJsApiLoader({
     id: "google-map-script",
-    googleMapsApiKey: process.env.REACT_APP_API_KEY,
+    googleMapsApiKey: apiKey,
   });
 
   return isLoaded ? (

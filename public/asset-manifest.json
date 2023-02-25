@@ -1,7 +1,7 @@
 {
   "files": {
     "main.css": "/static/css/main.7743ac6c.css",
-    "main.js": "/static/js/main.3e66ac1e.js",
+    "main.js": "/static/js/main.38494236.js",
     "static/js/787.c4e7f8f9.chunk.js": "/static/js/787.c4e7f8f9.chunk.js",
     "static/media/vu-anh-TiVPTYCG_3E-unsplash.jpg": "/static/media/vu-anh-TiVPTYCG_3E-unsplash.228e93015e05f99242cb.jpg",
     "static/media/cta-image2.png": "/static/media/cta-image2.a438910f31e89d073dfb.png",
@@ -10,11 +10,11 @@
     "static/media/willow-high-resolution-logo-color-on-transparent-background (1).png": "/static/media/willow-high-resolution-logo-color-on-transparent-background (1).cb45b07ec222d4e047cd.png",
     "index.html": "/index.html",
     "main.7743ac6c.css.map": "/static/css/main.7743ac6c.css.map",
-    "main.3e66ac1e.js.map": "/static/js/main.3e66ac1e.js.map",
+    "main.38494236.js.map": "/static/js/main.38494236.js.map",
     "787.c4e7f8f9.chunk.js.map": "/static/js/787.c4e7f8f9.chunk.js.map"
   },
   "entrypoints": [
     "static/css/main.7743ac6c.css",
-    "static/js/main.3e66ac1e.js"
+    "static/js/main.38494236.js"
   ]
 }
