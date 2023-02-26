@@ -7,11 +7,6 @@
 #   Character.create(name: "Luke", movie: movies.first)
 
 
-puts 'Clearing db...'
-User.destroy_all
-Listing.destroy_all
-ListApplication.destroy_all
-
 
 puts 'Seeding users...'
 
