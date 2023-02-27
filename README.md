@@ -20,10 +20,10 @@ This is a full-stack real estate marketplace application built using React and R
 ## How to run the application
 
 - Clone the repository from Github
-- Install dependencies using npm install and bundle install
-- Run rails db:create and rails db:migrate to create the database and run migrations
-- Start the Rails server using rails s
-- Start the React app using npm start
+- Install dependencies using **npm install** and **bundle install**
+- Run **rails db:create** and **rails db:migrate** to create the database and run migrations
+- Start the Rails server using **rails s**
+- Start the React app using **npm start**
 - Open your browser and navigate to http://localhost:4000 to view the application.
   Demo
 - A demo of the application can be found [here](https://www.loom.com/share/ba477e1e26074951af1bafad44e37c41).
