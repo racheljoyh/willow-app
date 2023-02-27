@@ -15,8 +15,6 @@ function Rentals({
     <Rental key={rental.id} rental={rental} />
   ));
 
-  console.log(rentals);
-
   return (
     <div>
       <Search
